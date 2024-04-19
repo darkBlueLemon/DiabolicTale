@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">DiabolicTale</string>
+    <string name="title_activity_welcome">WelcomeActivity</string>
+    <string name="title_activity_sign_in">SignInActivity</string>
+    <string name="title_activity_sign_up">SignUpActivity</string>
+    <string name="title_activity_sme_details">SmeDetailsActivity</string>
 </resources>
