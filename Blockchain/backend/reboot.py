@@ -98,5 +98,4 @@ print("Latest post ID:", latest_post_id)
 post_data = smeContract.functions.readPost(latest_post_id).call()
 
 print("Post Data:", post_data)
-
 """

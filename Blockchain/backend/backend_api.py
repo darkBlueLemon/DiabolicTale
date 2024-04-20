@@ -7,7 +7,7 @@ w3 = Web3(HTTPProvider('http://127.0.0.1:7545'))
 
 caller = "0xd268C2504B16a520cb5A87468CcA42B46a81CAb1"
 
-smeCA = "0x8f510EFEd75547FbEb66A14e255Ce63b3529924F"
+smeCA = "0x7B0FEbAf56641BEAedF761A12EfFF1eC924cedeF"
 smeABI = '[{"inputs":[{"internalType":"string","name":"_bid","type":"string"},{"internalType":"string","name":"_content","type":"string"},{"internalType":"string","name":"_contact","type":"string"}],"name":"createPost","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_postID","type":"uint256"}],"name":"readPost","outputs":[{"internalType":"uint256","name":"","type":"uint256"},{"internalType":"string","name":"","type":"string"},{"internalType":"string","name":"","type":"string"},{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"smePostCount","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"smePosts","outputs":[{"internalType":"uint256","name":"postID","type":"uint256"},{"internalType":"string","name":"bID","type":"string"},{"internalType":"string","name":"postContent","type":"string"},{"internalType":"string","name":"contact","type":"string"}],"stateMutability":"view","type":"function"}]'
 
 smeContract = w3.eth.contract(address=smeCA, abi=smeABI)
@@ -47,7 +47,13 @@ def finputpost():
 def fingetpost():
     pid = int(request.args.get('pid'))
     post_data = finContract.functions.readPost(pid).call()
-    return post_data
+    print(post_data)
+    return {
+        "postID": post_data[0],
+        "bID": post_data[1],
+        "content": post_data[2],
+        "contact": post_data[3],
+    }
 
 if __name__ == '__main__':
     app.run(debug=True)
