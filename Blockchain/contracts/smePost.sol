@@ -17,9 +17,10 @@ contract smePost {
         smePosts[smePostCount] = Post(smePostCount, _bid, _content, _contact);
     }
 
-    function readPost(uint _postID) external view returns (uint, string memory, string memory, string memory) {
-        _postID = 127;
+    function readPost(uint _postID) public view returns (uint, string memory, string memory, string memory) {
+        require(_postID > 0 && _postID <= smePostCount, "Invalid post ID");
+        
         Post memory post = smePosts[_postID];
-        return (_postID, post.bID, post.postContent, post.contact);
+        return (post.postID, post.bID, post.postContent, post.contact);
     }
 }

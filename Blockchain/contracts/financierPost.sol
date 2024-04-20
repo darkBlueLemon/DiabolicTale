@@ -8,27 +8,32 @@ contract financierPost {
         string bID;
         string postContent;
         string contact;
-        string filter;
-        bool isDeleted;
     }
 
     mapping(uint => Post) public financierPosts;
 
-    function createPost(string memory _bid, string memory _content, string memory _contact, string memory _filter) public {
+    function createPost(string memory _bid, string memory _content, string memory _contact) public {
         financierPostCount ++;
-        financierPosts[financierPostCount] = Post(financierPostCount, _bid, _content, _contact, _filter, false);
+        financierPosts[financierPostCount] = Post(financierPostCount, _bid, _content, _contact);
     }
 
-    function updatePost(uint _postid, string memory _newcontent, string memory _newcontact) public {
-        Post memory currPost = financierPosts[_postid];
-        currPost.postContent = _newcontent;
-        currPost.contact = _newcontact;
-        financierPosts[_postid].isDeleted = true;
-        financierPostCount ++;
-        financierPosts[financierPostCount] = currPost;
+    function readPost(uint _postID) public view returns (uint, string memory, string memory, string memory) {
+        require(_postID > 0 && _postID <= financierPostCount, "Invalid post ID");
+        
+        Post memory post = financierPosts[_postID];
+        return (post.postID, post.bID, post.postContent, post.contact);
     }
 
-    function deletePost(uint _postid) public {
-        financierPosts[_postid].isDeleted = true;
-    }
+    // function updatePost(uint _postid, string memory _newcontent, string memory _newcontact) public {
+    //     Post memory currPost = financierPosts[_postid];
+    //     currPost.postContent = _newcontent;
+    //     currPost.contact = _newcontact;
+    //     financierPosts[_postid].isDeleted = true;
+    //     financierPostCount ++;
+    //     financierPosts[financierPostCount] = currPost;
+    // }
+
+    // function deletePost(uint _postid) public {
+    //     financierPosts[_postid].isDeleted = true;
+    // }
 }

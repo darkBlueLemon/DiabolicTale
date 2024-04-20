@@ -6679,14 +6679,14 @@
     "absolutePath": "project:/contracts/smeReg.sol",
     "exportedSymbols": {
       "SMERegistration": [
-        442
+        426
       ]
     },
-    "id": 443,
+    "id": 427,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 245,
+        "id": 229,
         "literals": [
           "solidity",
           ">=",
@@ -6706,9 +6706,9 @@
         "contractDependencies": [],
         "contractKind": "contract",
         "fullyImplemented": true,
-        "id": 442,
+        "id": 426,
         "linearizedBaseContracts": [
-          442
+          426
         ],
         "name": "SMERegistration",
         "nameLocation": "44:15:3",
@@ -6716,16 +6716,16 @@
         "nodes": [
           {
             "canonicalName": "SMERegistration.SME",
-            "id": 256,
+            "id": 240,
             "members": [
               {
                 "constant": false,
-                "id": 247,
+                "id": 231,
                 "mutability": "mutable",
                 "name": "businessID",
                 "nameLocation": "131:10:3",
                 "nodeType": "VariableDeclaration",
-                "scope": 256,
+                "scope": 240,
                 "src": "124:17:3",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -6734,7 +6734,7 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 246,
+                  "id": 230,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
                   "src": "124:6:3",
@@ -6747,12 +6747,12 @@
               },
               {
                 "constant": false,
-                "id": 249,
+                "id": 233,
                 "mutability": "mutable",
                 "name": "creditScore",
                 "nameLocation": "157:11:3",
                 "nodeType": "VariableDeclaration",
-                "scope": 256,
+                "scope": 240,
                 "src": "152:16:3",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -6761,7 +6761,7 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 248,
+                  "id": 232,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "152:4:3",
@@ -6774,12 +6774,12 @@
               },
               {
                 "constant": false,
-                "id": 251,
+                "id": 235,
                 "mutability": "mutable",
                 "name": "companyName",
                 "nameLocation": "186:11:3",
                 "nodeType": "VariableDeclaration",
-                "scope": 256,
+                "scope": 240,
                 "src": "179:18:3",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -6788,7 +6788,7 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 250,
+                  "id": 234,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
                   "src": "179:6:3",
@@ -6801,12 +6801,12 @@
               },
               {
                 "constant": false,
-                "id": 253,
+                "id": 237,
                 "mutability": "mutable",
                 "name": "contactDetails",
                 "nameLocation": "215:14:3",
                 "nodeType": "VariableDeclaration",
-                "scope": 256,
+                "scope": 240,
                 "src": "208:21:3",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -6815,7 +6815,7 @@
                   "typeString": "string"
                 },
                 "typeName": {
-                  "id": 252,
+                  "id": 236,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
                   "src": "208:6:3",
@@ -6828,12 +6828,12 @@
               },
               {
                 "constant": false,
-                "id": 255,
+                "id": 239,
                 "mutability": "mutable",
                 "name": "smeAddress",
                 "nameLocation": "248:10:3",
                 "nodeType": "VariableDeclaration",
-                "scope": 256,
+                "scope": 240,
                 "src": "240:18:3",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -6842,7 +6842,7 @@
                   "typeString": "address"
                 },
                 "typeName": {
-                  "id": 254,
+                  "id": 238,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
                   "src": "240:7:3",
@@ -6858,30 +6858,30 @@
             "name": "SME",
             "nameLocation": "109:3:3",
             "nodeType": "StructDefinition",
-            "scope": 442,
+            "scope": 426,
             "src": "102:164:3",
             "visibility": "public"
           },
           {
             "constant": false,
             "functionSelector": "0d914b2e",
-            "id": 261,
+            "id": 245,
             "mutability": "mutable",
             "name": "smeRegistry",
             "nameLocation": "334:11:3",
             "nodeType": "VariableDeclaration",
-            "scope": 442,
+            "scope": 426,
             "src": "304:41:3",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_mapping$_t_string_memory_ptr_$_t_struct$_SME_$256_storage_$",
+              "typeIdentifier": "t_mapping$_t_string_memory_ptr_$_t_struct$_SME_$240_storage_$",
               "typeString": "mapping(string => struct SMERegistration.SME)"
             },
             "typeName": {
-              "id": 260,
+              "id": 244,
               "keyType": {
-                "id": 257,
+                "id": 241,
                 "name": "string",
                 "nodeType": "ElementaryTypeName",
                 "src": "312:6:3",
@@ -6893,23 +6893,23 @@
               "nodeType": "Mapping",
               "src": "304:22:3",
               "typeDescriptions": {
-                "typeIdentifier": "t_mapping$_t_string_memory_ptr_$_t_struct$_SME_$256_storage_$",
+                "typeIdentifier": "t_mapping$_t_string_memory_ptr_$_t_struct$_SME_$240_storage_$",
                 "typeString": "mapping(string => struct SMERegistration.SME)"
               },
               "valueType": {
-                "id": 259,
+                "id": 243,
                 "nodeType": "UserDefinedTypeName",
                 "pathNode": {
-                  "id": 258,
+                  "id": 242,
                   "name": "SME",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 256,
+                  "referencedDeclaration": 240,
                   "src": "322:3:3"
                 },
-                "referencedDeclaration": 256,
+                "referencedDeclaration": 240,
                 "src": "322:3:3",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_SME_$256_storage_ptr",
+                  "typeIdentifier": "t_struct$_SME_$240_storage_ptr",
                   "typeString": "struct SMERegistration.SME"
                 }
               }
@@ -6919,23 +6919,23 @@
           {
             "anonymous": false,
             "eventSelector": "5fa271b86a3676b63a9d7a3d6b515d0ab2a4e89164eb06a0a92d759bd8e6c703",
-            "id": 267,
+            "id": 251,
             "name": "SMERegistered",
             "nameLocation": "398:13:3",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 266,
+              "id": 250,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 263,
+                  "id": 247,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "businessID",
                   "nameLocation": "419:10:3",
                   "nodeType": "VariableDeclaration",
-                  "scope": 267,
+                  "scope": 251,
                   "src": "412:17:3",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -6944,7 +6944,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 262,
+                    "id": 246,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "412:6:3",
@@ -6957,13 +6957,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 265,
+                  "id": 249,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "smeAddress",
                   "nameLocation": "439:10:3",
                   "nodeType": "VariableDeclaration",
-                  "scope": 267,
+                  "scope": 251,
                   "src": "431:18:3",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -6972,7 +6972,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 264,
+                    "id": 248,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "431:7:3",
@@ -6991,7 +6991,7 @@
           },
           {
             "body": {
-              "id": 375,
+              "id": 359,
               "nodeType": "Block",
               "src": "631:854:3",
               "statements": [
@@ -7003,7 +7003,7 @@
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
                         },
-                        "id": 285,
+                        "id": 269,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -7012,11 +7012,11 @@
                           "expression": {
                             "arguments": [
                               {
-                                "id": 281,
+                                "id": 265,
                                 "name": "_businessID",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 269,
+                                "referencedDeclaration": 253,
                                 "src": "656:11:3",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_string_memory_ptr",
@@ -7031,7 +7031,7 @@
                                   "typeString": "string memory"
                                 }
                               ],
-                              "id": 280,
+                              "id": 264,
                               "isConstant": false,
                               "isLValue": false,
                               "isPure": true,
@@ -7043,14 +7043,14 @@
                                 "typeString": "type(bytes storage pointer)"
                               },
                               "typeName": {
-                                "id": 279,
+                                "id": 263,
                                 "name": "bytes",
                                 "nodeType": "ElementaryTypeName",
                                 "src": "650:5:3",
                                 "typeDescriptions": {}
                               }
                             },
-                            "id": 282,
+                            "id": 266,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": false,
@@ -7065,7 +7065,7 @@
                               "typeString": "bytes memory"
                             }
                           },
-                          "id": 283,
+                          "id": 267,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -7082,7 +7082,7 @@
                         "operator": ">",
                         "rightExpression": {
                           "hexValue": "30",
-                          "id": 284,
+                          "id": 268,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": true,
@@ -7104,7 +7104,7 @@
                       },
                       {
                         "hexValue": "427573696e657373204944206d757374206e6f7420626520656d707479",
-                        "id": 286,
+                        "id": 270,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -7130,7 +7130,7 @@
                           "typeString": "literal_string \"Business ID must not be empty\""
                         }
                       ],
-                      "id": 278,
+                      "id": 262,
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
@@ -7144,7 +7144,7 @@
                         "typeString": "function (bool,string memory) pure"
                       }
                     },
-                    "id": 287,
+                    "id": 271,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -7159,7 +7159,7 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 288,
+                  "id": 272,
                   "nodeType": "ExpressionStatement",
                   "src": "642:71:3"
                 },
@@ -7171,7 +7171,7 @@
                           "typeIdentifier": "t_address",
                           "typeString": "address"
                         },
-                        "id": 298,
+                        "id": 282,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -7179,24 +7179,24 @@
                         "leftExpression": {
                           "expression": {
                             "baseExpression": {
-                              "id": 290,
+                              "id": 274,
                               "name": "smeRegistry",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 261,
+                              "referencedDeclaration": 245,
                               "src": "732:11:3",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_mapping$_t_string_memory_ptr_$_t_struct$_SME_$256_storage_$",
+                                "typeIdentifier": "t_mapping$_t_string_memory_ptr_$_t_struct$_SME_$240_storage_$",
                                 "typeString": "mapping(string memory => struct SMERegistration.SME storage ref)"
                               }
                             },
-                            "id": 292,
+                            "id": 276,
                             "indexExpression": {
-                              "id": 291,
+                              "id": 275,
                               "name": "_businessID",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 269,
+                              "referencedDeclaration": 253,
                               "src": "744:11:3",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_string_memory_ptr",
@@ -7210,18 +7210,18 @@
                             "nodeType": "IndexAccess",
                             "src": "732:24:3",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_struct$_SME_$256_storage",
+                              "typeIdentifier": "t_struct$_SME_$240_storage",
                               "typeString": "struct SMERegistration.SME storage ref"
                             }
                           },
-                          "id": 293,
+                          "id": 277,
                           "isConstant": false,
                           "isLValue": true,
                           "isPure": false,
                           "lValueRequested": false,
                           "memberName": "smeAddress",
                           "nodeType": "MemberAccess",
-                          "referencedDeclaration": 255,
+                          "referencedDeclaration": 239,
                           "src": "732:35:3",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address",
@@ -7234,7 +7234,7 @@
                           "arguments": [
                             {
                               "hexValue": "30",
-                              "id": 296,
+                              "id": 280,
                               "isConstant": false,
                               "isLValue": false,
                               "isPure": true,
@@ -7256,7 +7256,7 @@
                                 "typeString": "int_const 0"
                               }
                             ],
-                            "id": 295,
+                            "id": 279,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": true,
@@ -7268,14 +7268,14 @@
                               "typeString": "type(address)"
                             },
                             "typeName": {
-                              "id": 294,
+                              "id": 278,
                               "name": "address",
                               "nodeType": "ElementaryTypeName",
                               "src": "771:7:3",
                               "typeDescriptions": {}
                             }
                           },
-                          "id": 297,
+                          "id": 281,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": true,
@@ -7298,7 +7298,7 @@
                       },
                       {
                         "hexValue": "534d4520616c72656164792072656769737465726564",
-                        "id": 299,
+                        "id": 283,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -7324,7 +7324,7 @@
                           "typeString": "literal_string \"SME already registered\""
                         }
                       ],
-                      "id": 289,
+                      "id": 273,
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
@@ -7338,7 +7338,7 @@
                         "typeString": "function (bool,string memory) pure"
                       }
                     },
-                    "id": 300,
+                    "id": 284,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -7353,23 +7353,23 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 301,
+                  "id": 285,
                   "nodeType": "ExpressionStatement",
                   "src": "724:84:3"
                 },
                 {
                   "assignments": [
-                    303
+                    287
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 303,
+                      "id": 287,
                       "mutability": "mutable",
                       "name": "smeAddress",
                       "nameLocation": "876:10:3",
                       "nodeType": "VariableDeclaration",
-                      "scope": 375,
+                      "scope": 359,
                       "src": "868:18:3",
                       "stateVariable": false,
                       "storageLocation": "default",
@@ -7378,7 +7378,7 @@
                         "typeString": "address"
                       },
                       "typeName": {
-                        "id": 302,
+                        "id": 286,
                         "name": "address",
                         "nodeType": "ElementaryTypeName",
                         "src": "868:7:3",
@@ -7391,7 +7391,7 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 322,
+                  "id": 306,
                   "initialValue": {
                     "arguments": [
                       {
@@ -7404,7 +7404,7 @@
                                     "arguments": [
                                       {
                                         "expression": {
-                                          "id": 313,
+                                          "id": 297,
                                           "name": "block",
                                           "nodeType": "Identifier",
                                           "overloadedDeclarations": [],
@@ -7415,7 +7415,7 @@
                                             "typeString": "block"
                                           }
                                         },
-                                        "id": 314,
+                                        "id": 298,
                                         "isConstant": false,
                                         "isLValue": false,
                                         "isPure": false,
@@ -7430,7 +7430,7 @@
                                       },
                                       {
                                         "expression": {
-                                          "id": 315,
+                                          "id": 299,
                                           "name": "msg",
                                           "nodeType": "Identifier",
                                           "overloadedDeclarations": [],
@@ -7441,7 +7441,7 @@
                                             "typeString": "msg"
                                           }
                                         },
-                                        "id": 316,
+                                        "id": 300,
                                         "isConstant": false,
                                         "isLValue": false,
                                         "isPure": false,
@@ -7467,7 +7467,7 @@
                                         }
                                       ],
                                       "expression": {
-                                        "id": 311,
+                                        "id": 295,
                                         "name": "abi",
                                         "nodeType": "Identifier",
                                         "overloadedDeclarations": [],
@@ -7478,7 +7478,7 @@
                                           "typeString": "abi"
                                         }
                                       },
-                                      "id": 312,
+                                      "id": 296,
                                       "isConstant": false,
                                       "isLValue": false,
                                       "isPure": true,
@@ -7491,7 +7491,7 @@
                                         "typeString": "function () pure returns (bytes memory)"
                                       }
                                     },
-                                    "id": 317,
+                                    "id": 301,
                                     "isConstant": false,
                                     "isLValue": false,
                                     "isPure": false,
@@ -7514,7 +7514,7 @@
                                       "typeString": "bytes memory"
                                     }
                                   ],
-                                  "id": 310,
+                                  "id": 294,
                                   "name": "keccak256",
                                   "nodeType": "Identifier",
                                   "overloadedDeclarations": [],
@@ -7525,7 +7525,7 @@
                                     "typeString": "function (bytes memory) pure returns (bytes32)"
                                   }
                                 },
-                                "id": 318,
+                                "id": 302,
                                 "isConstant": false,
                                 "isLValue": false,
                                 "isPure": false,
@@ -7548,7 +7548,7 @@
                                   "typeString": "bytes32"
                                 }
                               ],
-                              "id": 309,
+                              "id": 293,
                               "isConstant": false,
                               "isLValue": false,
                               "isPure": true,
@@ -7560,14 +7560,14 @@
                                 "typeString": "type(uint256)"
                               },
                               "typeName": {
-                                "id": 308,
+                                "id": 292,
                                 "name": "uint",
                                 "nodeType": "ElementaryTypeName",
                                 "src": "905:4:3",
                                 "typeDescriptions": {}
                               }
                             },
-                            "id": 319,
+                            "id": 303,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": false,
@@ -7590,7 +7590,7 @@
                               "typeString": "uint256"
                             }
                           ],
-                          "id": 307,
+                          "id": 291,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": true,
@@ -7602,14 +7602,14 @@
                             "typeString": "type(uint160)"
                           },
                           "typeName": {
-                            "id": 306,
+                            "id": 290,
                             "name": "uint160",
                             "nodeType": "ElementaryTypeName",
                             "src": "897:7:3",
                             "typeDescriptions": {}
                           }
                         },
-                        "id": 320,
+                        "id": 304,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -7632,7 +7632,7 @@
                           "typeString": "uint160"
                         }
                       ],
-                      "id": 305,
+                      "id": 289,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -7644,14 +7644,14 @@
                         "typeString": "type(address)"
                       },
                       "typeName": {
-                        "id": 304,
+                        "id": 288,
                         "name": "address",
                         "nodeType": "ElementaryTypeName",
                         "src": "889:7:3",
                         "typeDescriptions": {}
                       }
                     },
-                    "id": 321,
+                    "id": 305,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -7671,17 +7671,17 @@
                 },
                 {
                   "assignments": [
-                    324
+                    308
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 324,
+                      "id": 308,
                       "mutability": "mutable",
                       "name": "privateKey",
                       "nameLocation": "1032:10:3",
                       "nodeType": "VariableDeclaration",
-                      "scope": 375,
+                      "scope": 359,
                       "src": "1019:23:3",
                       "stateVariable": false,
                       "storageLocation": "memory",
@@ -7690,7 +7690,7 @@
                         "typeString": "bytes"
                       },
                       "typeName": {
-                        "id": 323,
+                        "id": 307,
                         "name": "bytes",
                         "nodeType": "ElementaryTypeName",
                         "src": "1019:5:3",
@@ -7702,12 +7702,12 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 332,
+                  "id": 316,
                   "initialValue": {
                     "arguments": [
                       {
                         "expression": {
-                          "id": 327,
+                          "id": 311,
                           "name": "block",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
@@ -7718,7 +7718,7 @@
                             "typeString": "block"
                           }
                         },
-                        "id": 328,
+                        "id": 312,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -7733,7 +7733,7 @@
                       },
                       {
                         "expression": {
-                          "id": 329,
+                          "id": 313,
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
@@ -7744,7 +7744,7 @@
                             "typeString": "msg"
                           }
                         },
-                        "id": 330,
+                        "id": 314,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -7770,7 +7770,7 @@
                         }
                       ],
                       "expression": {
-                        "id": 325,
+                        "id": 309,
                         "name": "abi",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
@@ -7781,7 +7781,7 @@
                           "typeString": "abi"
                         }
                       },
-                      "id": 326,
+                      "id": 310,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -7794,7 +7794,7 @@
                         "typeString": "function () pure returns (bytes memory)"
                       }
                     },
-                    "id": 331,
+                    "id": 315,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -7814,65 +7814,65 @@
                 },
                 {
                   "assignments": [
-                    335
+                    319
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 335,
+                      "id": 319,
                       "mutability": "mutable",
                       "name": "newSME",
                       "nameLocation": "1144:6:3",
                       "nodeType": "VariableDeclaration",
-                      "scope": 375,
+                      "scope": 359,
                       "src": "1132:18:3",
                       "stateVariable": false,
                       "storageLocation": "storage",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_SME_$256_storage_ptr",
+                        "typeIdentifier": "t_struct$_SME_$240_storage_ptr",
                         "typeString": "struct SMERegistration.SME"
                       },
                       "typeName": {
-                        "id": 334,
+                        "id": 318,
                         "nodeType": "UserDefinedTypeName",
                         "pathNode": {
-                          "id": 333,
+                          "id": 317,
                           "name": "SME",
                           "nodeType": "IdentifierPath",
-                          "referencedDeclaration": 256,
+                          "referencedDeclaration": 240,
                           "src": "1132:3:3"
                         },
-                        "referencedDeclaration": 256,
+                        "referencedDeclaration": 240,
                         "src": "1132:3:3",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_SME_$256_storage_ptr",
+                          "typeIdentifier": "t_struct$_SME_$240_storage_ptr",
                           "typeString": "struct SMERegistration.SME"
                         }
                       },
                       "visibility": "internal"
                     }
                   ],
-                  "id": 339,
+                  "id": 323,
                   "initialValue": {
                     "baseExpression": {
-                      "id": 336,
+                      "id": 320,
                       "name": "smeRegistry",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 261,
+                      "referencedDeclaration": 245,
                       "src": "1153:11:3",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_mapping$_t_string_memory_ptr_$_t_struct$_SME_$256_storage_$",
+                        "typeIdentifier": "t_mapping$_t_string_memory_ptr_$_t_struct$_SME_$240_storage_$",
                         "typeString": "mapping(string memory => struct SMERegistration.SME storage ref)"
                       }
                     },
-                    "id": 338,
+                    "id": 322,
                     "indexExpression": {
-                      "id": 337,
+                      "id": 321,
                       "name": "_businessID",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 269,
+                      "referencedDeclaration": 253,
                       "src": "1165:11:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_string_memory_ptr",
@@ -7886,7 +7886,7 @@
                     "nodeType": "IndexAccess",
                     "src": "1153:24:3",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_SME_$256_storage",
+                      "typeIdentifier": "t_struct$_SME_$240_storage",
                       "typeString": "struct SMERegistration.SME storage ref"
                     }
                   },
@@ -7895,32 +7895,32 @@
                 },
                 {
                   "expression": {
-                    "id": 344,
+                    "id": 328,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "expression": {
-                        "id": 340,
+                        "id": 324,
                         "name": "newSME",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 335,
+                        "referencedDeclaration": 319,
                         "src": "1188:6:3",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_SME_$256_storage_ptr",
+                          "typeIdentifier": "t_struct$_SME_$240_storage_ptr",
                           "typeString": "struct SMERegistration.SME storage pointer"
                         }
                       },
-                      "id": 342,
+                      "id": 326,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
                       "lValueRequested": true,
                       "memberName": "businessID",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 247,
+                      "referencedDeclaration": 231,
                       "src": "1188:17:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_string_storage",
@@ -7930,11 +7930,11 @@
                     "nodeType": "Assignment",
                     "operator": "=",
                     "rightHandSide": {
-                      "id": 343,
+                      "id": 327,
                       "name": "_businessID",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 269,
+                      "referencedDeclaration": 253,
                       "src": "1208:11:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_string_memory_ptr",
@@ -7947,38 +7947,38 @@
                       "typeString": "string storage ref"
                     }
                   },
-                  "id": 345,
+                  "id": 329,
                   "nodeType": "ExpressionStatement",
                   "src": "1188:31:3"
                 },
                 {
                   "expression": {
-                    "id": 350,
+                    "id": 334,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "expression": {
-                        "id": 346,
+                        "id": 330,
                         "name": "newSME",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 335,
+                        "referencedDeclaration": 319,
                         "src": "1230:6:3",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_SME_$256_storage_ptr",
+                          "typeIdentifier": "t_struct$_SME_$240_storage_ptr",
                           "typeString": "struct SMERegistration.SME storage pointer"
                         }
                       },
-                      "id": 348,
+                      "id": 332,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
                       "lValueRequested": true,
                       "memberName": "creditScore",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 249,
+                      "referencedDeclaration": 233,
                       "src": "1230:18:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -7988,11 +7988,11 @@
                     "nodeType": "Assignment",
                     "operator": "=",
                     "rightHandSide": {
-                      "id": 349,
+                      "id": 333,
                       "name": "_creditScore",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 271,
+                      "referencedDeclaration": 255,
                       "src": "1251:12:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -8005,38 +8005,38 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 351,
+                  "id": 335,
                   "nodeType": "ExpressionStatement",
                   "src": "1230:33:3"
                 },
                 {
                   "expression": {
-                    "id": 356,
+                    "id": 340,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "expression": {
-                        "id": 352,
+                        "id": 336,
                         "name": "newSME",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 335,
+                        "referencedDeclaration": 319,
                         "src": "1274:6:3",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_SME_$256_storage_ptr",
+                          "typeIdentifier": "t_struct$_SME_$240_storage_ptr",
                           "typeString": "struct SMERegistration.SME storage pointer"
                         }
                       },
-                      "id": 354,
+                      "id": 338,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
                       "lValueRequested": true,
                       "memberName": "companyName",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 251,
+                      "referencedDeclaration": 235,
                       "src": "1274:18:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_string_storage",
@@ -8046,11 +8046,11 @@
                     "nodeType": "Assignment",
                     "operator": "=",
                     "rightHandSide": {
-                      "id": 355,
+                      "id": 339,
                       "name": "_companyName",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 273,
+                      "referencedDeclaration": 257,
                       "src": "1295:12:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_string_memory_ptr",
@@ -8063,38 +8063,38 @@
                       "typeString": "string storage ref"
                     }
                   },
-                  "id": 357,
+                  "id": 341,
                   "nodeType": "ExpressionStatement",
                   "src": "1274:33:3"
                 },
                 {
                   "expression": {
-                    "id": 362,
+                    "id": 346,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "expression": {
-                        "id": 358,
+                        "id": 342,
                         "name": "newSME",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 335,
+                        "referencedDeclaration": 319,
                         "src": "1318:6:3",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_SME_$256_storage_ptr",
+                          "typeIdentifier": "t_struct$_SME_$240_storage_ptr",
                           "typeString": "struct SMERegistration.SME storage pointer"
                         }
                       },
-                      "id": 360,
+                      "id": 344,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
                       "lValueRequested": true,
                       "memberName": "contactDetails",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 253,
+                      "referencedDeclaration": 237,
                       "src": "1318:21:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_string_storage",
@@ -8104,11 +8104,11 @@
                     "nodeType": "Assignment",
                     "operator": "=",
                     "rightHandSide": {
-                      "id": 361,
+                      "id": 345,
                       "name": "_contactDetails",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 275,
+                      "referencedDeclaration": 259,
                       "src": "1342:15:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_string_memory_ptr",
@@ -8121,38 +8121,38 @@
                       "typeString": "string storage ref"
                     }
                   },
-                  "id": 363,
+                  "id": 347,
                   "nodeType": "ExpressionStatement",
                   "src": "1318:39:3"
                 },
                 {
                   "expression": {
-                    "id": 368,
+                    "id": 352,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "expression": {
-                        "id": 364,
+                        "id": 348,
                         "name": "newSME",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 335,
+                        "referencedDeclaration": 319,
                         "src": "1368:6:3",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_SME_$256_storage_ptr",
+                          "typeIdentifier": "t_struct$_SME_$240_storage_ptr",
                           "typeString": "struct SMERegistration.SME storage pointer"
                         }
                       },
-                      "id": 366,
+                      "id": 350,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
                       "lValueRequested": true,
                       "memberName": "smeAddress",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 255,
+                      "referencedDeclaration": 239,
                       "src": "1368:17:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
@@ -8162,11 +8162,11 @@
                     "nodeType": "Assignment",
                     "operator": "=",
                     "rightHandSide": {
-                      "id": 367,
+                      "id": 351,
                       "name": "smeAddress",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 303,
+                      "referencedDeclaration": 287,
                       "src": "1388:10:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
@@ -8179,7 +8179,7 @@
                       "typeString": "address"
                     }
                   },
-                  "id": 369,
+                  "id": 353,
                   "nodeType": "ExpressionStatement",
                   "src": "1368:30:3"
                 },
@@ -8187,11 +8187,11 @@
                   "eventCall": {
                     "arguments": [
                       {
-                        "id": 371,
+                        "id": 355,
                         "name": "_businessID",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 269,
+                        "referencedDeclaration": 253,
                         "src": "1453:11:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_string_memory_ptr",
@@ -8199,11 +8199,11 @@
                         }
                       },
                       {
-                        "id": 372,
+                        "id": 356,
                         "name": "smeAddress",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 303,
+                        "referencedDeclaration": 287,
                         "src": "1466:10:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -8222,18 +8222,18 @@
                           "typeString": "address"
                         }
                       ],
-                      "id": 370,
+                      "id": 354,
                       "name": "SMERegistered",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 267,
+                      "referencedDeclaration": 251,
                       "src": "1439:13:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_string_memory_ptr_$_t_address_$returns$__$",
                         "typeString": "function (string memory,address)"
                       }
                     },
-                    "id": 373,
+                    "id": 357,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -8248,14 +8248,14 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 374,
+                  "id": 358,
                   "nodeType": "EmitStatement",
                   "src": "1434:43:3"
                 }
               ]
             },
             "functionSelector": "da355378",
-            "id": 376,
+            "id": 360,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
@@ -8263,17 +8263,17 @@
             "nameLocation": "507:11:3",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 276,
+              "id": 260,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 269,
+                  "id": 253,
                   "mutability": "mutable",
                   "name": "_businessID",
                   "nameLocation": "533:11:3",
                   "nodeType": "VariableDeclaration",
-                  "scope": 376,
+                  "scope": 360,
                   "src": "519:25:3",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -8282,7 +8282,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 268,
+                    "id": 252,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "519:6:3",
@@ -8295,12 +8295,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 271,
+                  "id": 255,
                   "mutability": "mutable",
                   "name": "_creditScore",
                   "nameLocation": "551:12:3",
                   "nodeType": "VariableDeclaration",
-                  "scope": 376,
+                  "scope": 360,
                   "src": "546:17:3",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -8309,7 +8309,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 270,
+                    "id": 254,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "546:4:3",
@@ -8322,12 +8322,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 273,
+                  "id": 257,
                   "mutability": "mutable",
                   "name": "_companyName",
                   "nameLocation": "579:12:3",
                   "nodeType": "VariableDeclaration",
-                  "scope": 376,
+                  "scope": 360,
                   "src": "565:26:3",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -8336,7 +8336,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 272,
+                    "id": 256,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "565:6:3",
@@ -8349,12 +8349,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 275,
+                  "id": 259,
                   "mutability": "mutable",
                   "name": "_contactDetails",
                   "nameLocation": "607:15:3",
                   "nodeType": "VariableDeclaration",
-                  "scope": 376,
+                  "scope": 360,
                   "src": "593:29:3",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -8363,7 +8363,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 274,
+                    "id": 258,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "593:6:3",
@@ -8378,12 +8378,12 @@
               "src": "518:105:3"
             },
             "returnParameters": {
-              "id": 277,
+              "id": 261,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "631:0:3"
             },
-            "scope": 442,
+            "scope": 426,
             "src": "498:987:3",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -8391,71 +8391,71 @@
           },
           {
             "body": {
-              "id": 422,
+              "id": 406,
               "nodeType": "Block",
               "src": "1676:233:3",
               "statements": [
                 {
                   "assignments": [
-                    393
+                    377
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 393,
+                      "id": 377,
                       "mutability": "mutable",
                       "name": "sme",
                       "nameLocation": "1698:3:3",
                       "nodeType": "VariableDeclaration",
-                      "scope": 422,
+                      "scope": 406,
                       "src": "1687:14:3",
                       "stateVariable": false,
                       "storageLocation": "memory",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_SME_$256_memory_ptr",
+                        "typeIdentifier": "t_struct$_SME_$240_memory_ptr",
                         "typeString": "struct SMERegistration.SME"
                       },
                       "typeName": {
-                        "id": 392,
+                        "id": 376,
                         "nodeType": "UserDefinedTypeName",
                         "pathNode": {
-                          "id": 391,
+                          "id": 375,
                           "name": "SME",
                           "nodeType": "IdentifierPath",
-                          "referencedDeclaration": 256,
+                          "referencedDeclaration": 240,
                           "src": "1687:3:3"
                         },
-                        "referencedDeclaration": 256,
+                        "referencedDeclaration": 240,
                         "src": "1687:3:3",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_SME_$256_storage_ptr",
+                          "typeIdentifier": "t_struct$_SME_$240_storage_ptr",
                           "typeString": "struct SMERegistration.SME"
                         }
                       },
                       "visibility": "internal"
                     }
                   ],
-                  "id": 397,
+                  "id": 381,
                   "initialValue": {
                     "baseExpression": {
-                      "id": 394,
+                      "id": 378,
                       "name": "smeRegistry",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 261,
+                      "referencedDeclaration": 245,
                       "src": "1704:11:3",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_mapping$_t_string_memory_ptr_$_t_struct$_SME_$256_storage_$",
+                        "typeIdentifier": "t_mapping$_t_string_memory_ptr_$_t_struct$_SME_$240_storage_$",
                         "typeString": "mapping(string memory => struct SMERegistration.SME storage ref)"
                       }
                     },
-                    "id": 396,
+                    "id": 380,
                     "indexExpression": {
-                      "id": 395,
+                      "id": 379,
                       "name": "_businessID",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 378,
+                      "referencedDeclaration": 362,
                       "src": "1716:11:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_string_memory_ptr",
@@ -8469,7 +8469,7 @@
                     "nodeType": "IndexAccess",
                     "src": "1704:24:3",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_SME_$256_storage",
+                      "typeIdentifier": "t_struct$_SME_$240_storage",
                       "typeString": "struct SMERegistration.SME storage ref"
                     }
                   },
@@ -8484,7 +8484,7 @@
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
                         },
-                        "id": 406,
+                        "id": 390,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -8494,25 +8494,25 @@
                             "arguments": [
                               {
                                 "expression": {
-                                  "id": 401,
+                                  "id": 385,
                                   "name": "sme",
                                   "nodeType": "Identifier",
                                   "overloadedDeclarations": [],
-                                  "referencedDeclaration": 393,
+                                  "referencedDeclaration": 377,
                                   "src": "1753:3:3",
                                   "typeDescriptions": {
-                                    "typeIdentifier": "t_struct$_SME_$256_memory_ptr",
+                                    "typeIdentifier": "t_struct$_SME_$240_memory_ptr",
                                     "typeString": "struct SMERegistration.SME memory"
                                   }
                                 },
-                                "id": 402,
+                                "id": 386,
                                 "isConstant": false,
                                 "isLValue": true,
                                 "isPure": false,
                                 "lValueRequested": false,
                                 "memberName": "businessID",
                                 "nodeType": "MemberAccess",
-                                "referencedDeclaration": 247,
+                                "referencedDeclaration": 231,
                                 "src": "1753:14:3",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_string_memory_ptr",
@@ -8527,7 +8527,7 @@
                                   "typeString": "string memory"
                                 }
                               ],
-                              "id": 400,
+                              "id": 384,
                               "isConstant": false,
                               "isLValue": false,
                               "isPure": true,
@@ -8539,14 +8539,14 @@
                                 "typeString": "type(bytes storage pointer)"
                               },
                               "typeName": {
-                                "id": 399,
+                                "id": 383,
                                 "name": "bytes",
                                 "nodeType": "ElementaryTypeName",
                                 "src": "1747:5:3",
                                 "typeDescriptions": {}
                               }
                             },
-                            "id": 403,
+                            "id": 387,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": false,
@@ -8561,7 +8561,7 @@
                               "typeString": "bytes memory"
                             }
                           },
-                          "id": 404,
+                          "id": 388,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -8578,7 +8578,7 @@
                         "operator": ">",
                         "rightExpression": {
                           "hexValue": "30",
-                          "id": 405,
+                          "id": 389,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": true,
@@ -8600,7 +8600,7 @@
                       },
                       {
                         "hexValue": "534d45206e6f7420666f756e64",
-                        "id": 407,
+                        "id": 391,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -8626,7 +8626,7 @@
                           "typeString": "literal_string \"SME not found\""
                         }
                       ],
-                      "id": 398,
+                      "id": 382,
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
@@ -8640,7 +8640,7 @@
                         "typeString": "function (bool,string memory) pure"
                       }
                     },
-                    "id": 408,
+                    "id": 392,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -8655,7 +8655,7 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 409,
+                  "id": 393,
                   "nodeType": "ExpressionStatement",
                   "src": "1739:58:3"
                 },
@@ -8664,25 +8664,25 @@
                     "components": [
                       {
                         "expression": {
-                          "id": 410,
+                          "id": 394,
                           "name": "sme",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 393,
+                          "referencedDeclaration": 377,
                           "src": "1816:3:3",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_SME_$256_memory_ptr",
+                            "typeIdentifier": "t_struct$_SME_$240_memory_ptr",
                             "typeString": "struct SMERegistration.SME memory"
                           }
                         },
-                        "id": 411,
+                        "id": 395,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "businessID",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 247,
+                        "referencedDeclaration": 231,
                         "src": "1816:14:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_string_memory_ptr",
@@ -8691,25 +8691,25 @@
                       },
                       {
                         "expression": {
-                          "id": 412,
+                          "id": 396,
                           "name": "sme",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 393,
+                          "referencedDeclaration": 377,
                           "src": "1832:3:3",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_SME_$256_memory_ptr",
+                            "typeIdentifier": "t_struct$_SME_$240_memory_ptr",
                             "typeString": "struct SMERegistration.SME memory"
                           }
                         },
-                        "id": 413,
+                        "id": 397,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "creditScore",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 249,
+                        "referencedDeclaration": 233,
                         "src": "1832:15:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -8718,25 +8718,25 @@
                       },
                       {
                         "expression": {
-                          "id": 414,
+                          "id": 398,
                           "name": "sme",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 393,
+                          "referencedDeclaration": 377,
                           "src": "1849:3:3",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_SME_$256_memory_ptr",
+                            "typeIdentifier": "t_struct$_SME_$240_memory_ptr",
                             "typeString": "struct SMERegistration.SME memory"
                           }
                         },
-                        "id": 415,
+                        "id": 399,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "companyName",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 251,
+                        "referencedDeclaration": 235,
                         "src": "1849:15:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_string_memory_ptr",
@@ -8745,25 +8745,25 @@
                       },
                       {
                         "expression": {
-                          "id": 416,
+                          "id": 400,
                           "name": "sme",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 393,
+                          "referencedDeclaration": 377,
                           "src": "1866:3:3",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_SME_$256_memory_ptr",
+                            "typeIdentifier": "t_struct$_SME_$240_memory_ptr",
                             "typeString": "struct SMERegistration.SME memory"
                           }
                         },
-                        "id": 417,
+                        "id": 401,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "contactDetails",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 253,
+                        "referencedDeclaration": 237,
                         "src": "1866:18:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_string_memory_ptr",
@@ -8772,25 +8772,25 @@
                       },
                       {
                         "expression": {
-                          "id": 418,
+                          "id": 402,
                           "name": "sme",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 393,
+                          "referencedDeclaration": 377,
                           "src": "1886:3:3",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_SME_$256_memory_ptr",
+                            "typeIdentifier": "t_struct$_SME_$240_memory_ptr",
                             "typeString": "struct SMERegistration.SME memory"
                           }
                         },
-                        "id": 419,
+                        "id": 403,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "smeAddress",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 255,
+                        "referencedDeclaration": 239,
                         "src": "1886:14:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -8798,7 +8798,7 @@
                         }
                       }
                     ],
-                    "id": 420,
+                    "id": 404,
                     "isConstant": false,
                     "isInlineArray": false,
                     "isLValue": false,
@@ -8811,15 +8811,15 @@
                       "typeString": "tuple(string memory,uint256,string memory,string memory,address)"
                     }
                   },
-                  "functionReturnParameters": 390,
-                  "id": 421,
+                  "functionReturnParameters": 374,
+                  "id": 405,
                   "nodeType": "Return",
                   "src": "1808:93:3"
                 }
               ]
             },
             "functionSelector": "d5f077f9",
-            "id": 423,
+            "id": 407,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
@@ -8827,17 +8827,17 @@
             "nameLocation": "1557:10:3",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 379,
+              "id": 363,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 378,
+                  "id": 362,
                   "mutability": "mutable",
                   "name": "_businessID",
                   "nameLocation": "1582:11:3",
                   "nodeType": "VariableDeclaration",
-                  "scope": 423,
+                  "scope": 407,
                   "src": "1568:25:3",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -8846,7 +8846,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 377,
+                    "id": 361,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "1568:6:3",
@@ -8861,17 +8861,17 @@
               "src": "1567:27:3"
             },
             "returnParameters": {
-              "id": 390,
+              "id": 374,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 381,
+                  "id": 365,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 423,
+                  "scope": 407,
                   "src": "1616:13:3",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -8880,7 +8880,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 380,
+                    "id": 364,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "1616:6:3",
@@ -8893,12 +8893,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 383,
+                  "id": 367,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 423,
+                  "scope": 407,
                   "src": "1631:4:3",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -8907,7 +8907,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 382,
+                    "id": 366,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "1631:4:3",
@@ -8920,12 +8920,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 385,
+                  "id": 369,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 423,
+                  "scope": 407,
                   "src": "1637:13:3",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -8934,7 +8934,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 384,
+                    "id": 368,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "1637:6:3",
@@ -8947,12 +8947,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 387,
+                  "id": 371,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 423,
+                  "scope": 407,
                   "src": "1652:13:3",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -8961,7 +8961,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 386,
+                    "id": 370,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "1652:6:3",
@@ -8974,12 +8974,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 389,
+                  "id": 373,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 423,
+                  "scope": 407,
                   "src": "1667:7:3",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -8988,7 +8988,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 388,
+                    "id": 372,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "1667:7:3",
@@ -9003,7 +9003,7 @@
               ],
               "src": "1615:60:3"
             },
-            "scope": 442,
+            "scope": 426,
             "src": "1548:361:3",
             "stateMutability": "view",
             "virtual": false,
@@ -9011,7 +9011,7 @@
           },
           {
             "body": {
-              "id": 440,
+              "id": 424,
               "nodeType": "Block",
               "src": "2055:96:3",
               "statements": [
@@ -9020,7 +9020,7 @@
                     "arguments": [
                       {
                         "expression": {
-                          "id": 432,
+                          "id": 416,
                           "name": "block",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
@@ -9031,7 +9031,7 @@
                             "typeString": "block"
                           }
                         },
-                        "id": 433,
+                        "id": 417,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -9047,24 +9047,24 @@
                       {
                         "expression": {
                           "baseExpression": {
-                            "id": 434,
+                            "id": 418,
                             "name": "smeRegistry",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 261,
+                            "referencedDeclaration": 245,
                             "src": "2107:11:3",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_mapping$_t_string_memory_ptr_$_t_struct$_SME_$256_storage_$",
+                              "typeIdentifier": "t_mapping$_t_string_memory_ptr_$_t_struct$_SME_$240_storage_$",
                               "typeString": "mapping(string memory => struct SMERegistration.SME storage ref)"
                             }
                           },
-                          "id": 436,
+                          "id": 420,
                           "indexExpression": {
-                            "id": 435,
+                            "id": 419,
                             "name": "_businessID",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 425,
+                            "referencedDeclaration": 409,
                             "src": "2119:11:3",
                             "typeDescriptions": {
                               "typeIdentifier": "t_string_memory_ptr",
@@ -9078,18 +9078,18 @@
                           "nodeType": "IndexAccess",
                           "src": "2107:24:3",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_SME_$256_storage",
+                            "typeIdentifier": "t_struct$_SME_$240_storage",
                             "typeString": "struct SMERegistration.SME storage ref"
                           }
                         },
-                        "id": 437,
+                        "id": 421,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "smeAddress",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 255,
+                        "referencedDeclaration": 239,
                         "src": "2107:35:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -9109,7 +9109,7 @@
                         }
                       ],
                       "expression": {
-                        "id": 430,
+                        "id": 414,
                         "name": "abi",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
@@ -9120,7 +9120,7 @@
                           "typeString": "abi"
                         }
                       },
-                      "id": 431,
+                      "id": 415,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -9133,7 +9133,7 @@
                         "typeString": "function () pure returns (bytes memory)"
                       }
                     },
-                    "id": 438,
+                    "id": 422,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -9148,15 +9148,15 @@
                       "typeString": "bytes memory"
                     }
                   },
-                  "functionReturnParameters": 429,
-                  "id": 439,
+                  "functionReturnParameters": 413,
+                  "id": 423,
                   "nodeType": "Return",
                   "src": "2066:77:3"
                 }
               ]
             },
             "functionSelector": "ad835e4a",
-            "id": 441,
+            "id": 425,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
@@ -9164,17 +9164,17 @@
             "nameLocation": "1976:16:3",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 426,
+              "id": 410,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 425,
+                  "id": 409,
                   "mutability": "mutable",
                   "name": "_businessID",
                   "nameLocation": "2007:11:3",
                   "nodeType": "VariableDeclaration",
-                  "scope": 441,
+                  "scope": 425,
                   "src": "1993:25:3",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -9183,7 +9183,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 424,
+                    "id": 408,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "1993:6:3",
@@ -9198,17 +9198,17 @@
               "src": "1992:27:3"
             },
             "returnParameters": {
-              "id": 429,
+              "id": 413,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 428,
+                  "id": 412,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 441,
+                  "scope": 425,
                   "src": "2041:12:3",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -9217,7 +9217,7 @@
                     "typeString": "bytes"
                   },
                   "typeName": {
-                    "id": 427,
+                    "id": 411,
                     "name": "bytes",
                     "nodeType": "ElementaryTypeName",
                     "src": "2041:5:3",
@@ -9231,14 +9231,14 @@
               ],
               "src": "2040:14:3"
             },
-            "scope": 442,
+            "scope": 426,
             "src": "1967:184:3",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "public"
           }
         ],
-        "scope": 443,
+        "scope": 427,
         "src": "35:2119:3",
         "usedErrors": []
       }
@@ -9251,7 +9251,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.16",
-  "updatedAt": "2024-04-20T09:08:26.892Z",
+  "updatedAt": "2024-04-20T13:57:32.893Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},
