@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
 
 class ViewModel: ViewModel() {
-    private var _navBarIndex by mutableStateOf(2)
+    private var _navBarIndex by mutableStateOf(3)
     val navBarIndex: Int get() = _navBarIndex
     fun setNavBarIndex(newIndex: Int) {
         _navBarIndex = newIndex
@@ -35,8 +35,8 @@ class ViewModel: ViewModel() {
                 _state.update { it.copy(
                     isDoneAnimationEnabled = true,
                     isAddingPost = false,
-                    isViewingSME = false,
-                    isViewingTradeFintech = false
+                    isViewingSMEDetails = false,
+                    isViewingTradeFintechDetails = false
                 )
                 }
             }
@@ -48,25 +48,25 @@ class ViewModel: ViewModel() {
             }
             UIEvent.ShowTradeFintech -> {
                 _state.update { it.copy(
-                    isViewingTradeFintech = true,
+                    isViewingTradeFintechDetails = true,
                 )
                 }
             }
             UIEvent.HideTradeFintech -> {
                 _state.update { it.copy(
-                    isViewingTradeFintech = false,
+                    isViewingTradeFintechDetails = false,
                 )
                 }
             }
             UIEvent.ShowSME -> {
                 _state.update { it.copy(
-                    isViewingSME = true,
+                    isViewingSMEDetails = true,
                 )
                 }
             }
             UIEvent.HideSME -> {
                 _state.update { it.copy(
-                    isViewingSME = false,
+                    isViewingSMEDetails = false,
                 )
                 }
             }
@@ -103,6 +103,32 @@ class ViewModel: ViewModel() {
             UIEvent.HideFirstTime -> {
                 _state.update { it.copy(
                     isFirstTime = false,
+                )
+                }
+            }
+            UIEvent.ShowFTMarket -> {
+                _state.update { it.copy(
+                    isViewingFTMarket = true,
+                    isViewingSMEMarket = false,
+                )
+                }
+            }
+            UIEvent.HideFTMarket -> {
+                _state.update { it.copy(
+                    isViewingFTMarket = false,
+                )
+                }
+            }
+            UIEvent.ShowSMEMarket -> {
+                _state.update { it.copy(
+                    isViewingSMEMarket = true,
+                    isViewingFTMarket = false,
+                )
+                }
+            }
+            UIEvent.HideSMEMarket -> {
+                _state.update { it.copy(
+                    isViewingSMEMarket = false,
                 )
                 }
             }

@@ -28,4 +28,8 @@ interface UIEvent {
     object HideSignUp: UIEvent
     object ShowFirstTime: UIEvent
     object HideFirstTime: UIEvent
+    object ShowFTMarket: UIEvent
+    object HideFTMarket: UIEvent
+    object ShowSMEMarket: UIEvent
+    object HideSMEMarket: UIEvent
 }

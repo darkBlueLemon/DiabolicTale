@@ -1,31 +1,20 @@
 package com.invincible.diabolictale
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
-import androidx.activity.compose.PredictiveBackHandler
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
 import com.invincible.diabolictale.ui.theme.DiabolicTaleTheme
 
 data class BottomNavigationItem(
@@ -75,69 +64,14 @@ class MainActivity : ComponentActivity() {
                                     AddPost(viewModel = viewModel)
                                 } else if (state.isDoneAnimationEnabled) {
                                     DoneLottieAnimation(viewModel)
-                                } else if (state.isViewingTradeFintech) {
+                                } else if (state.isViewingTradeFintechDetails) {
                                     TradeFintechDetails(viewModel = viewModel)
-                                } else if (state.isViewingSME) {
+                                } else if (state.isViewingSMEDetails) {
                                     SMEDetails(viewModel = viewModel)
-                                }
-                                else {
-                                    if (smeOrTradeFintech) {
-                                        Column {
-                                            LazyColumn(modifier = Modifier) {
-                                                items(20) { item ->
-                                                    Column(
-                                                        modifier = Modifier
-                                                            .fillMaxWidth()
-                                                            .padding(16.dp)
-                                                            .clickable {
-                                                                viewModel.onEvent(UIEvent.ShowSME)
-//                                                            context.startActivity(
-//                                                                Intent(
-//                                                                    context,
-//                                                                    SmeDetailsActivity::class.java
-//                                                                )
-//                                                            )
-                                                            }
-                                                    ) {
-                                                        Text(
-                                                            text = "SWE",
-                                                            fontWeight = FontWeight.Bold
-                                                        )
-                                                        Text(text = "Contracts")
-                                                        Text(text = "Terms")
-                                                        Text(text = "Online Applications")
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    } else {
-                                        Column {
-                                            LazyColumn(modifier = Modifier.fillMaxWidth()) {
-                                                items(20) { item ->
-                                                    Column(
-                                                        modifier = Modifier
-                                                            .fillMaxWidth()
-                                                            .padding(16.dp)
-                                                            .clickable {
-                                                                viewModel.onEvent(UIEvent.ShowTradeFintech)
-//                                                            context.startActivity(
-//                                                                Intent(
-//                                                                    context,
-//                                                                    FinTechActivity::class.java
-//                                                                )
-//                                                            )
-                                                            }
-                                                    ) {
-                                                        Text(
-                                                            text = "FinTech",
-                                                            fontWeight = FontWeight.Bold
-                                                        )
-                                                        Text(text = "whatever else")
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
+                                } else if(state.isViewingFTMarket) {
+                                    FTMarket(viewModel)
+                                } else if(state.isViewingSMEMarket) {
+                                    SMEMarket(viewModel)
                                 }
                             }
                         }
