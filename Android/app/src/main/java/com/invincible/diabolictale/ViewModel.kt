@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
 
 class ViewModel: ViewModel() {
-    private var _navBarIndex by mutableStateOf(3)
+    private var _navBarIndex by mutableStateOf(2)
     val navBarIndex: Int get() = _navBarIndex
     fun setNavBarIndex(newIndex: Int) {
         _navBarIndex = newIndex
@@ -34,6 +34,8 @@ class ViewModel: ViewModel() {
             UIEvent.ShowDoneAnimation -> {
                 _state.update { it.copy(
                     isDoneAnimationEnabled = true,
+                    isViewingFTMarket = false,
+                    isViewingSMEMarket = false,
                     isAddingPost = false,
                     isViewingSMEDetails = false,
                     isViewingTradeFintechDetails = false
@@ -44,6 +46,34 @@ class ViewModel: ViewModel() {
                 _state.update { it.copy(
                     isDoneAnimationEnabled = false,
                 )
+                }
+            }
+            UIEvent.ShowLoadingAnimation -> {
+                _state.update { it.copy(
+                    isLoadingAnimationEnabled = true,
+                    isAddingPost = false,
+                    isViewingSMEDetails = false,
+                    isViewingTradeFintechDetails = false,
+                    isViewingFTMarket = false,
+                    isViewingSMEMarket = false,
+                )
+                }
+            }
+            UIEvent.HideLoadingAnimation -> {
+                if(_state.value.isRoleSME) {
+                    _state.update {
+                        it.copy(
+                            isLoadingAnimationEnabled = false,
+                            isViewingSMEMarket = true
+                        )
+                    }
+                } else {
+                    _state.update {
+                        it.copy(
+                            isLoadingAnimationEnabled = false,
+                            isViewingFTMarket = true
+                        )
+                    }
                 }
             }
             UIEvent.ShowTradeFintech -> {
@@ -110,6 +140,8 @@ class ViewModel: ViewModel() {
                 _state.update { it.copy(
                     isViewingFTMarket = true,
                     isViewingSMEMarket = false,
+                    isViewingSMEDetails = false,
+                    isViewingTradeFintechDetails = false
                 )
                 }
             }
@@ -123,12 +155,26 @@ class ViewModel: ViewModel() {
                 _state.update { it.copy(
                     isViewingSMEMarket = true,
                     isViewingFTMarket = false,
+                    isViewingSMEDetails = false,
+                    isViewingTradeFintechDetails = false
                 )
                 }
             }
             UIEvent.HideSMEMarket -> {
                 _state.update { it.copy(
                     isViewingSMEMarket = false,
+                )
+                }
+            }
+            UIEvent.RoleSME -> {
+                _state.update { it.copy(
+                    isRoleSME = !_state.value.isRoleSME
+                )
+                }
+            }
+            UIEvent.RoleFT -> {
+                _state.update { it.copy(
+                    isRoleSME = false
                 )
                 }
             }

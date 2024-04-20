@@ -18,6 +18,8 @@ interface UIEvent {
     object HideAddPost: UIEvent
     object ShowDoneAnimation: UIEvent
     object HideDoneAnimation: UIEvent
+    object ShowLoadingAnimation: UIEvent
+    object HideLoadingAnimation: UIEvent
     object ShowTradeFintech: UIEvent
     object HideTradeFintech: UIEvent
     object ShowSME: UIEvent
@@ -32,4 +34,6 @@ interface UIEvent {
     object HideFTMarket: UIEvent
     object ShowSMEMarket: UIEvent
     object HideSMEMarket: UIEvent
+    object RoleSME: UIEvent
+    object RoleFT: UIEvent
 }

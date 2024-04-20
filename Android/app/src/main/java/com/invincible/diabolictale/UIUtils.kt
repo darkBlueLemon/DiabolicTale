@@ -14,16 +14,26 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.AddCircle
 import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.icons.filled.Face
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.outlined.AccountCircle
 import androidx.compose.material.icons.outlined.Add
 import androidx.compose.material.icons.outlined.Email
+import androidx.compose.material.icons.outlined.Face
+import androidx.compose.material.icons.outlined.Home
+import androidx.compose.material.icons.outlined.Info
+import androidx.compose.material.icons.outlined.Refresh
 import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material3.Badge
 import androidx.compose.material3.BadgedBox
@@ -40,6 +50,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -51,6 +62,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.airbnb.lottie.compose.LottieAnimation
@@ -59,13 +71,18 @@ import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
 import kotlinx.coroutines.delay
 
-var smeOrTradeFintech by mutableStateOf(true)
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MyNavigationBar(viewModel:ViewModel, content: @Composable (PaddingValues) -> Unit) {
 //    val viewModel = viewModel<ViewModel>()
+    val state by viewModel.state.collectAsState()
     val items = listOf(
+        BottomNavigationItem(
+            title = if(state.isRoleSME) "SME" else "Fintech",
+            selectedIcon = Icons.Filled.AccountCircle,
+            unselectedIcon = Icons.Outlined.AccountCircle,
+            hasNews = false,
+        ),
         BottomNavigationItem(
             title = "Add",
             selectedIcon = Icons.Filled.AddCircle,
@@ -73,21 +90,16 @@ fun MyNavigationBar(viewModel:ViewModel, content: @Composable (PaddingValues) ->
             hasNews = false,
         ),
         BottomNavigationItem(
-            title = "Profile",
-            selectedIcon = Icons.Filled.AccountCircle,
-            unselectedIcon = Icons.Outlined.AccountCircle,
-            hasNews = false,
-        ),
-        BottomNavigationItem(
-            title = "SME Posts",
-            selectedIcon = Icons.Filled.Email,
-            unselectedIcon = Icons.Outlined.Email,
+            title = "Home",
+            selectedIcon = Icons.Filled.Home,
+            unselectedIcon = Icons.Outlined.Home,
             hasNews = true,
         ),
         BottomNavigationItem(
-            title = "TF Posts",
-            selectedIcon = Icons.Filled.Email,
-            unselectedIcon = Icons.Outlined.Email,
+//            title = if(!state.isRoleSME) "SME" else "Fintech",
+            title = "Compt.",
+            selectedIcon = Icons.Filled.Info,
+            unselectedIcon = Icons.Outlined.Info,
             hasNews = false,
         ),
 //        BottomNavigationItem(
@@ -99,8 +111,8 @@ fun MyNavigationBar(viewModel:ViewModel, content: @Composable (PaddingValues) ->
 //        ),
         BottomNavigationItem(
             title = "Settings",
-            selectedIcon = Icons.Filled.Settings,
-            unselectedIcon = Icons.Outlined.Settings,
+            selectedIcon = Icons.Filled.Face,
+            unselectedIcon = Icons.Outlined.Face,
             hasNews = false,
         ),
     )
@@ -130,14 +142,30 @@ fun MyNavigationBar(viewModel:ViewModel, content: @Composable (PaddingValues) ->
                                 viewModel.setNavBarIndex(index)
                                 viewModel.onEvent(UIEvent.HideAddPost)
 
+                                if(index == 1) {
+                                    viewModel.onEvent(UIEvent.ShowAddPost)
+                                }
+                                else if(index == 0) {
+                                    viewModel.onEvent(UIEvent.RoleSME)
+                                    viewModel.setNavBarIndex(2)
+                                    if(!state.isRoleSME) viewModel.onEvent(UIEvent.ShowFTMarket)
+                                    else viewModel.onEvent(UIEvent.ShowSMEMarket)
+                                    viewModel.onEvent(UIEvent.ShowLoadingAnimation)
+                                }
+                                else if(index == 2) {
+                                    if(state.isRoleSME) viewModel.onEvent(UIEvent.ShowFTMarket)
+                                    else viewModel.onEvent(UIEvent.ShowSMEMarket)
+                                }
+                                else if(index == 3) {
+                                    if(!state.isRoleSME) viewModel.onEvent(UIEvent.ShowFTMarket)
+                                    else viewModel.onEvent(UIEvent.ShowSMEMarket)
+                                }
+
                                 if (item.title == "SME Posts") {
 //                                    smeOrTradeFintech = true
-                                    viewModel.onEvent(UIEvent.ShowSMEMarket)
                                 } else if (item.title == "TF Posts") {
-                                    viewModel.onEvent(UIEvent.ShowFTMarket)
 //                                    smeOrTradeFintech = false
                                 } else if (item.title == "Add") {
-                                    viewModel.onEvent(UIEvent.ShowAddPost)
 //                                    val intent = Intent(context, AddPostActivity::class.java)
 //                                    intent.putExtra("viewModel", viewModel)
 //                                    context.startActivity(intent)
@@ -194,7 +222,7 @@ fun FTMarket(viewModel: ViewModel) {
 //            .background(Color.White)
             .background(MaterialTheme.colorScheme.background)
             .fillMaxWidth()
-//            .heightIn(max = 660.dp),
+//            .heightIn(max = 660.dp)
         ,
         contentAlignment = Alignment.Center,
     ) {
@@ -209,8 +237,10 @@ fun FTMarket(viewModel: ViewModel) {
                 text = "Trade and Fintech Marketplace",
                 color = MaterialTheme.colorScheme.primary,
                 fontWeight = FontWeight.Bold,
-                fontSize = 24.sp
+                fontSize = 24.sp,
+                textDecoration = TextDecoration.Underline
             )
+            Spacer(modifier = Modifier.size(24.dp))
             Column {
                 LazyColumn(modifier = Modifier.fillMaxWidth()) {
                     items(20) { item ->
@@ -274,7 +304,8 @@ fun SMEMarket(viewModel: ViewModel) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Spacer(modifier = Modifier.size(12.dp))
-            Text(text = "SME Marketplace", color = MaterialTheme.colorScheme.primary, fontWeight = FontWeight.Bold, fontSize = 24.sp)
+            Text(text = "SME Marketplace", color = MaterialTheme.colorScheme.primary, fontWeight = FontWeight.Bold, fontSize = 24.sp, textDecoration = TextDecoration.Underline)
+            Spacer(modifier = Modifier.size(24.dp))
 //            Spacer(modifier = Modifier.size(12.dp))
             LazyColumn(modifier = Modifier) {
                 items(20) { item ->
@@ -334,7 +365,7 @@ fun DoneLottieAnimation(viewModel: ViewModel) {
 //    viewModel.onEvent(UIEvent.HideDoneAnimation)
     LaunchedEffect(key1 = progress) {
         while(progress != 1f) {
-            delay(1000)
+            delay(100)
         }
         viewModel.onEvent(UIEvent.HideDoneAnimation)
         viewModel.setNavBarIndex(2)
@@ -353,6 +384,41 @@ fun DoneLottieAnimation(viewModel: ViewModel) {
     ) {
         LottieAnimation(
             modifier = Modifier.size(200.dp),
+            composition = composition, progress = progress
+        )
+    }
+}
+
+@Composable
+fun LoadingLottieAnimation(viewModel: ViewModel) {
+    val composition by rememberLottieComposition(LottieCompositionSpec.RawRes(R.raw.done))
+    var isPlaying by remember {
+        mutableStateOf(true)
+    }
+    val progress by animateLottieCompositionAsState(composition = composition, isPlaying = isPlaying)
+    viewModel.onEvent(UIEvent.HideDoneAnimation)
+    LaunchedEffect(key1 = progress) {
+        while(progress != 1f) {
+            delay(100)
+        }
+        viewModel.onEvent(UIEvent.HideLoadingAnimation)
+        viewModel.setNavBarIndex(2)
+
+//        if(progress == 0f) {
+//            isPlaying = true
+//        }
+//        if(progress == 1f) {
+//            isPlaying = false
+//        }
+    }
+
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        LottieAnimation(
+            modifier = Modifier.size(700.dp),
             composition = composition, progress = progress
         )
     }
@@ -402,30 +468,78 @@ fun AddPost(viewModel: ViewModel) {
 fun TradeFintechDetails(viewModel: ViewModel) {
     Box(
         modifier = Modifier
-            .fillMaxSize()
+            .padding(30.dp)
+            .clip(RoundedCornerShape(20.dp))
+            .background(MaterialTheme.colorScheme.primaryContainer)
+            .heightIn(max = 700.dp)
+            .fillMaxWidth()
+        ,
     ) {
-        Column {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth(),
+            verticalArrangement = Arrangement.Bottom,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Spacer(modifier = Modifier.size(24.dp))
             Text(
-                text = "Trade FinTech Desc",
-                fontWeight = FontWeight.Bold
+                text = "Trade Fintech",
+                color = MaterialTheme.colorScheme.primary,
+                fontWeight = FontWeight.Bold,
+                fontSize = 24.sp,
+                textDecoration = TextDecoration.Underline
             )
-            Text(text = "Service Type")
-            Text(text = "Service Term")
-            Text(text = "Service Desc")
+            Spacer(modifier = Modifier.size(30.dp))
+            Column(
+                modifier = Modifier
+                    .fillMaxSize(),
+                verticalArrangement = Arrangement.Top,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Spacer(modifier = Modifier.size(12.dp))
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize(),
+                    verticalArrangement = Arrangement.Top,
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Text(
+                        text = "Trade FinTech Desc",
+                        fontWeight = FontWeight.Bold
+                    )
+                    Spacer(modifier = Modifier.size(24.dp))
+                    Text(text = "Service Type",
+                        fontWeight = FontWeight.Bold
+                        )
+                    Spacer(modifier = Modifier.size(24.dp))
+                    Text(text = "Service Term",
+                        fontWeight = FontWeight.Bold
+                        )
+                    Spacer(modifier = Modifier.size(24.dp))
+                    Text(text = "Service Desc",
+                        fontWeight = FontWeight.Bold
+                        )
+                    Spacer(modifier = Modifier.size(24.dp))
 
-            var value by rememberSaveable { mutableStateOf("") }
-            TextField(
-                value = value,
-                onValueChange = {
-                    value = it
-                },
-                label = { Text("some value") }
-            )
+                    if(viewModel.state.value.isRoleSME) {
+                        var value by rememberSaveable { mutableStateOf("") }
+                        TextField(
+                            value = value,
+                            onValueChange = {
+                                value = it
+                            },
+                            label = { Text("some value") }
+                        )
 
-            Button(onClick = {
-                viewModel.onEvent(UIEvent.ShowDoneAnimation)
-            }) {
-                Text(text = "REQUEST")
+                        Spacer(modifier = Modifier.size(24.dp))
+
+                        Button(onClick = {
+                            viewModel.onEvent(UIEvent.ShowDoneAnimation)
+                        }) {
+                            Text(text = "REQUEST")
+                        }
+                    }
+                }
             }
         }
     }
@@ -435,15 +549,12 @@ fun TradeFintechDetails(viewModel: ViewModel) {
 fun SMEDetails(viewModel: ViewModel) {
     Box(
         modifier = Modifier
-//                                    .height(300.dp)
-            .padding(20.dp)
+            .padding(30.dp)
             .clip(RoundedCornerShape(20.dp))
-//            .background(Color.White)
             .background(MaterialTheme.colorScheme.primaryContainer)
-            .fillMaxSize()
-//            .heightIn(max = 660.dp),
+            .heightIn(max = 700.dp)
+            .fillMaxWidth()
         ,
-        contentAlignment = Alignment.Center,
     ) {
         Column(
             modifier = Modifier
@@ -451,42 +562,60 @@ fun SMEDetails(viewModel: ViewModel) {
             verticalArrangement = Arrangement.Bottom,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Spacer(modifier = Modifier.size(12.dp))
+            Spacer(modifier = Modifier.size(24.dp))
             Text(
-                text = "SME Details and Buying/sponsoring",
-                fontWeight = FontWeight.Bold
+                text = "SME Buying/sponsoring",
+                color = MaterialTheme.colorScheme.primary,
+                fontWeight = FontWeight.Bold,
+                fontSize = 24.sp,
+                textDecoration = TextDecoration.Underline
             )
-            Text(
-                text = "Company Name",
-                fontWeight = FontWeight.Bold
-            )
-            Text(
-                text = "Credit Score",
-                fontWeight = FontWeight.Bold
-            )
-            Text(
-                text = "Contact",
-                fontWeight = FontWeight.Bold
-            )
-            Text(
-                text = "Company Description",
-                fontWeight = FontWeight.Bold
-            )
+            Spacer(modifier = Modifier.size(30.dp))
+            Column(
+                modifier = Modifier
+//                    .heightIn(min = 500.dp)
+                    .fillMaxSize(),
+                verticalArrangement = Arrangement.Top,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Spacer(modifier = Modifier.size(12.dp))
+                Text(
+                    text = "Company Name",
+                    fontWeight = FontWeight.Bold
+                )
+                Spacer(modifier = Modifier.size(12.dp))
+                Text(
+                    text = "Credit Score",
+                    fontWeight = FontWeight.Bold
+                )
+                Spacer(modifier = Modifier.size(12.dp))
+                Text(
+                    text = "Contact",
+                    fontWeight = FontWeight.Bold
+                )
+                Spacer(modifier = Modifier.size(12.dp))
+                Text(
+                    text = "Company Description",
+                    fontWeight = FontWeight.Bold
+                )
+                Spacer(modifier = Modifier.size(12.dp))
+                if(!viewModel.state.value.isRoleSME) {
+                    var value by rememberSaveable { mutableStateOf("") }
+                    TextField(
+                        value = value,
+                        onValueChange = {
+                            value = it
+                        },
+                        label = { Text("some value") }
+                    )
+                    Spacer(modifier = Modifier.size(12.dp))
 
-
-            var value by rememberSaveable { mutableStateOf("") }
-            TextField(
-                value = value,
-                onValueChange = {
-                    value = it
-                },
-                label = { Text("some value") }
-            )
-
-            Button(onClick = {
-                 viewModel.onEvent(UIEvent.ShowDoneAnimation)
-            }) {
-                Text(text = "SPONSOR")
+                    Button(onClick = {
+                        viewModel.onEvent(UIEvent.ShowDoneAnimation)
+                    }) {
+                        Text(text = "SPONSOR")
+                    }
+                }
             }
         }
     }

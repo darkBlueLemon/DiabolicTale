@@ -72,6 +72,8 @@ class MainActivity : ComponentActivity() {
                                     FTMarket(viewModel)
                                 } else if(state.isViewingSMEMarket) {
                                     SMEMarket(viewModel)
+                                } else if(state.isLoadingAnimationEnabled) {
+                                    LoadingLottieAnimation(viewModel = viewModel)
                                 }
                             }
                         }
