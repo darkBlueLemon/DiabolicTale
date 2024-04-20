@@ -11,5 +11,5 @@ data class UIState(
     val isFirstTime: Boolean = true,
     val isViewingSMEMarket: Boolean = false,
     val isViewingFTMarket: Boolean = true,
-    val isRoleSME: Boolean = true,
+    val isRoleSME: Boolean = false,
 )

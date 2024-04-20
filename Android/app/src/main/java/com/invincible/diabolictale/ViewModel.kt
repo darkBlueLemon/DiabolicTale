@@ -178,6 +178,12 @@ class ViewModel: ViewModel() {
                 )
                 }
             }
+            UIEvent.RoleNotFT -> {
+                _state.update { it.copy(
+                    isRoleSME = true
+                )
+                }
+            }
         }
     }
 }

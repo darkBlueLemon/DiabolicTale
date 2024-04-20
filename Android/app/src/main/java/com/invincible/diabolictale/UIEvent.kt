@@ -36,4 +36,5 @@ interface UIEvent {
     object HideSMEMarket: UIEvent
     object RoleSME: UIEvent
     object RoleFT: UIEvent
+    object RoleNotFT: UIEvent
 }

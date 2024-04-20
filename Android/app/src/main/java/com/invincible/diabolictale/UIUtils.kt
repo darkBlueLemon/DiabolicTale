@@ -1,6 +1,7 @@
 package com.invincible.diabolictale
 
 import android.content.Intent
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -35,10 +36,13 @@ import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.outlined.Refresh
 import androidx.compose.material.icons.outlined.Settings
+import androidx.compose.material.icons.rounded.AccountBox
 import androidx.compose.material3.Badge
 import androidx.compose.material3.BadgedBox
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -46,6 +50,7 @@ import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
@@ -60,8 +65,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -110,7 +117,7 @@ fun MyNavigationBar(viewModel:ViewModel, content: @Composable (PaddingValues) ->
 ////            badgeCount = 45
 //        ),
         BottomNavigationItem(
-            title = "Settings",
+            title = "Profile",
             selectedIcon = Icons.Filled.Face,
             unselectedIcon = Icons.Outlined.Face,
             hasNews = false,
@@ -148,8 +155,8 @@ fun MyNavigationBar(viewModel:ViewModel, content: @Composable (PaddingValues) ->
                                 else if(index == 0) {
                                     viewModel.onEvent(UIEvent.RoleSME)
                                     viewModel.setNavBarIndex(2)
-                                    if(!state.isRoleSME) viewModel.onEvent(UIEvent.ShowFTMarket)
-                                    else viewModel.onEvent(UIEvent.ShowSMEMarket)
+//                                    if(!state.isRoleSME) viewModel.onEvent(UIEvent.ShowFTMarket)
+//                                    else viewModel.onEvent(UIEvent.ShowSMEMarket)
                                     viewModel.onEvent(UIEvent.ShowLoadingAnimation)
                                 }
                                 else if(index == 2) {
@@ -255,25 +262,36 @@ fun FTMarket(viewModel: ViewModel) {
 //                            .heightIn(max = 660.dp),
                             contentAlignment = Alignment.Center,
                         ) {
-                            Column(
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .padding(16.dp)
-                                    .clickable {
-                                        viewModel.onEvent(UIEvent.ShowTradeFintech)
+                            Row(
+                                verticalAlignment = Alignment.CenterVertically,
+                                horizontalArrangement = Arrangement.Center
+                            ) {
+                                Image(
+                                    imageVector = Icons.Rounded.AccountBox,
+                                    contentDescription = null,
+                                    modifier = Modifier.size(100.dp).padding(20.dp),
+                                    colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onPrimaryContainer)
+                                )
+                                Column(
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .padding(16.dp)
+                                        .clickable {
+                                            viewModel.onEvent(UIEvent.ShowTradeFintech)
 //                                                            context.startActivity(
 //                                                                Intent(
 //                                                                    context,
 //                                                                    FinTechActivity::class.java
 //                                                                )
 //                                                            )
-                                    }
-                            ) {
-                                Text(
-                                    text = "FinTech",
-                                    fontWeight = FontWeight.Bold
-                                )
-                                Text(text = "whatever else")
+                                        }
+                                ) {
+                                    Text(
+                                        text = "FinTech",
+                                        fontWeight = FontWeight.Bold
+                                    )
+                                    Text(text = "whatever else")
+                                }
                             }
                         }
                     }
@@ -320,34 +338,44 @@ fun SMEMarket(viewModel: ViewModel) {
 //                            .heightIn(max = 660.dp),
                         contentAlignment = Alignment.Center,
                     ) {
-                        Column(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(16.dp)
-                                .clickable {
-                                    viewModel.onEvent(UIEvent.ShowSME)
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.Center
+                        ) {
+                            Image(imageVector = Icons.Rounded.AccountBox, contentDescription = null, modifier = Modifier.size(100.dp).padding(20.dp), colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onPrimaryContainer))
+
+                            Column(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(16.dp)
+                                    .clickable {
+                                        viewModel.onEvent(UIEvent.ShowSME)
 //                                                            context.startActivity(
 //                                                                Intent(
 //                                                                    context,
 //                                                                    SmeDetailsActivity::class.java
 //                                                                )
 //                                                            )
-                                }
-                        ) {
-                            Text(
-                                text = "SME",
-                                fontWeight = FontWeight.Bold,
-                                color = MaterialTheme.colorScheme.onPrimaryContainer
-                            )
-                            Text(text = "Contracts",
-                                color = MaterialTheme.colorScheme.onPrimaryContainer
-                            )
-                            Text(text = "Terms",
-                                color = MaterialTheme.colorScheme.onPrimaryContainer
-                            )
-                            Text(text = "Online Applications",
-                                color = MaterialTheme.colorScheme.onPrimaryContainer
-                            )
+                                    }
+                            ) {
+                                Text(
+                                    text = "SME",
+                                    fontWeight = FontWeight.Bold,
+                                    color = MaterialTheme.colorScheme.onPrimaryContainer
+                                )
+                                Text(
+                                    text = "Contracts",
+                                    color = MaterialTheme.colorScheme.onPrimaryContainer
+                                )
+                                Text(
+                                    text = "Terms",
+                                    color = MaterialTheme.colorScheme.onPrimaryContainer
+                                )
+                                Text(
+                                    text = "Online Applications",
+                                    color = MaterialTheme.colorScheme.onPrimaryContainer
+                                )
+                            }
                         }
                     }
                 }
@@ -368,6 +396,13 @@ fun DoneLottieAnimation(viewModel: ViewModel) {
             delay(100)
         }
         viewModel.onEvent(UIEvent.HideDoneAnimation)
+        if(viewModel.state.value.isRoleSME) {
+            viewModel.onEvent(UIEvent.HideFTMarket)
+            viewModel.onEvent(UIEvent.ShowSMEMarket)
+        } else {
+            viewModel.onEvent(UIEvent.HideSMEMarket)
+            viewModel.onEvent(UIEvent.ShowFTMarket)
+        }
         viewModel.setNavBarIndex(2)
 //        if(progress == 0f) {
 //            isPlaying = true
@@ -627,8 +662,24 @@ fun SignIn(viewModel: ViewModel) {
         modifier = Modifier
             .fillMaxSize()
     ) {
-        Column {
-            Text(text = "Login")
+        Column (
+            modifier = Modifier
+                .fillMaxSize(),
+            verticalArrangement = Arrangement.SpaceAround,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ){
+
+            Text(
+                modifier = Modifier
+                    .padding(top = 50.dp, bottom = 30.dp),
+//                            text = "Share files instantly\n" +
+//                                    "with Jedi Share",
+                text = "Login",
+                fontWeight = FontWeight.Bold,
+                textAlign = TextAlign.Center,
+                color = MaterialTheme.colorScheme.primary,
+                style = MaterialTheme.typography.headlineLarge)
+
             Text(text = "Please Sign In to Continue")
 
             var bid by rememberSaveable { mutableStateOf("") }
@@ -655,11 +706,26 @@ fun SignIn(viewModel: ViewModel) {
                 Text(text = "LOGIN")
             }
 
-            Text(text = "Forgot Password?", color = Color.Blue, modifier = Modifier.clickable {  })
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text(text = "Forgot Password?", color = Color.Blue, modifier = Modifier.clickable {  })
 
-            Row {
-                Text(text = "Don't have an account?")
-                Text(text = "Sign Up", color = Color.Blue, modifier = Modifier.clickable {  })
+                Row {
+                    Text(text = "Don't have an account?")
+                    Text(text = "Sign Up (SME)", color = Color.Blue, modifier = Modifier.clickable {
+                        viewModel.onEvent(UIEvent.HideSignIn)
+                        viewModel.onEvent(UIEvent.ShowSignUp)
+                        viewModel.onEvent(UIEvent.RoleNotFT)
+                    })
+                }
+
+                Text(text = "Sign Up (Trade/Fintech)", color = Color.Blue, modifier = Modifier.clickable {
+                    viewModel.onEvent(UIEvent.HideSignIn)
+                    viewModel.onEvent(UIEvent.ShowSignUp)
+                    viewModel.onEvent(UIEvent.RoleFT)
+                })
+
             }
         }
     }
@@ -671,90 +737,148 @@ fun SignUp(viewModel: ViewModel) {
         modifier = Modifier
             .fillMaxSize()
     ) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize(),
+            verticalArrangement = Arrangement.SpaceAround,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            if(viewModel.state.value.isRoleSME) {
+
+
+                Text(
+                    modifier = Modifier
+                        .padding(top = 50.dp, bottom = 30.dp),
+//                            text = "Share files instantly\n" +
+//                                    "with Jedi Share",
+                    text = "Sign Up SME",
+                    fontWeight = FontWeight.Bold,
+                    textAlign = TextAlign.Center,
+                    color = MaterialTheme.colorScheme.primary,
+                    style = MaterialTheme.typography.headlineLarge
+                )
+
+                Text(text = "Please Sign Up to Continue")
+
+
+//            Box(
+//                modifier = Modifier
+//                    .fillMaxSize()
+//            ) {
 //        if(smeOrTadeFintech) {
-            Column {
-                Text(text = "Sign Up SME")
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize(),
+                    verticalArrangement = Arrangement.SpaceAround,
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+//                    Text(text = "Sign Up SME")
 
-                var companyName by rememberSaveable { mutableStateOf("") }
-                TextField(
-                    value = companyName,
-                    onValueChange = {
-                        companyName = it
-                    },
-                    label = { Text("Email") }
+                    var companyName by rememberSaveable { mutableStateOf("") }
+                    TextField(
+                        value = companyName,
+                        onValueChange = {
+                            companyName = it
+                        },
+                        label = { Text("Email") }
+                    )
+
+                    var contact by rememberSaveable { mutableStateOf("") }
+                    TextField(
+                        value = contact,
+                        onValueChange = {
+                            contact = it
+                        },
+                        label = { Text("Contact") }
+                    )
+
+                    var creditScore by rememberSaveable { mutableStateOf("") }
+                    TextField(
+                        value = creditScore,
+                        onValueChange = {
+                            creditScore = it
+                        },
+                        label = { Text("Credit Score") }
+                    )
+
+                    var bid by rememberSaveable { mutableStateOf("") }
+                    TextField(
+                        value = bid,
+                        onValueChange = {
+                            bid = it
+                        },
+                        label = { Text("BID") }
+                    )
+
+                    Button(onClick = {
+                        viewModel.onEvent(UIEvent.HideSignUp)
+                        viewModel.onEvent(UIEvent.ShowFTMarket)
+                    }) {
+                        Text(text = "SIGN UP")
+                    }
+                }
+            } else {
+                Text(
+                    modifier = Modifier
+                        .padding(top = 50.dp, bottom = 30.dp),
+                    text = "Sign Up Trade/Fintech",
+                    fontWeight = FontWeight.Bold,
+                    textAlign = TextAlign.Center,
+                    color = MaterialTheme.colorScheme.primary,
+                    style = MaterialTheme.typography.headlineLarge
                 )
 
-                var contact by rememberSaveable { mutableStateOf("") }
-                TextField(
-                    value = contact,
-                    onValueChange = {
-                        contact = it
-                    },
-                    label = { Text("Contact") }
-                )
+                Text(text = "Please Sign Up to Continue")
 
-                var creditScore by rememberSaveable { mutableStateOf("") }
-                TextField(
-                    value = creditScore,
-                    onValueChange = {
-                        creditScore = it
-                    },
-                    label = { Text("Credit Score") }
-                )
 
-                var bid by rememberSaveable { mutableStateOf("") }
-                TextField(
-                    value = bid,
-                    onValueChange = {
-                        bid = it
-                    },
-                    label = { Text("BID") }
-                )
+//            Box(
+//                modifier = Modifier
+//                    .fillMaxSize()
+//            ) {
+//        if(smeOrTadeFintech) {
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize(),
+                    verticalArrangement = Arrangement.SpaceAround,
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
 
-                Button(onClick = {
-                    viewModel.onEvent(UIEvent.HideSignUp)
-                }) {
-                    Text(text = "SIGN UP")
+                    var companyName by rememberSaveable { mutableStateOf("") }
+                    TextField(
+                        value = companyName,
+                        onValueChange = {
+                            companyName = it
+                        },
+                        label = { Text("Email") }
+                    )
+
+                    var contact by rememberSaveable { mutableStateOf("") }
+                    TextField(
+                        value = contact,
+                        onValueChange = {
+                            contact = it
+                        },
+                        label = { Text("Contact") }
+                    )
+
+                    var bid by rememberSaveable { mutableStateOf("") }
+                    TextField(
+                        value = bid,
+                        onValueChange = {
+                            bid = it
+                        },
+                        label = { Text("BID") }
+                    )
+
+                    Button(onClick = {
+                        viewModel.onEvent(UIEvent.HideSignUp)
+                        viewModel.onEvent(UIEvent.ShowSMEMarket)
+                    }) {
+                        Text(text = "SIGN UP")
+                    }
                 }
             }
-//        } else {
-//            Column {
-//                Text(text = "Sign Up Trade Fintech")
-//
-//                var companyName by rememberSaveable { mutableStateOf("") }
-//                TextField(
-//                    value = companyName,
-//                    onValueChange = {
-//                        companyName = it
-//                    },
-//                    label = { Text("Email") }
-//                )
-//
-//                var contact by rememberSaveable { mutableStateOf("") }
-//                TextField(
-//                    value = contact,
-//                    onValueChange = {
-//                        contact = it
-//                    },
-//                    label = { Text("Contact") }
-//                )
-//
-//                var bid by rememberSaveable { mutableStateOf("") }
-//                TextField(
-//                    value = bid,
-//                    onValueChange = {
-//                        bid = it
-//                    },
-//                    label = { Text("BID") }
-//                )
-//
-//                Button(onClick = {
-//                    context.startActivity(Intent(context, MainActivity::class.java))
-//                }) {
-//                    Text(text = "SIGN UP")
-//                }
-//            }
-//        }
+        }
     }
 }
 
@@ -763,46 +887,169 @@ fun Welcome(viewModel: ViewModel) {
     Box(
         modifier = Modifier
             .fillMaxSize()
+            .background(MaterialTheme.colorScheme.background),
     ) {
-        Column {
-            Row(modifier = Modifier.fillMaxWidth()) {
-                Text(text = "WELCOME")
+        Column (
+            modifier = Modifier
+                .fillMaxSize(),
+            verticalArrangement = Arrangement.SpaceBetween,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ){
+            Column (
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            ){
+                Text(
+                    modifier = Modifier
+                        .padding(top = 60.dp),
+                    text = "Welcome to",
+                    style = MaterialTheme.typography.headlineMedium
+                    ,
+                    color = Color.Black,
+                )
+                Text(
+                    modifier = Modifier
+                        .padding(bottom = 5.dp),
+                    text = "Commerce Simplified",
+                    textDecoration = TextDecoration.Underline,
+//                    color = Color(0xFFec1c22),
+                    color = MaterialTheme.colorScheme.primary,
+                    fontWeight = FontWeight.Bold,
+                    style = MaterialTheme.typography.headlineMedium,
+//                                textDecoration = TextDecoration.Underline
+                )
             }
-            Button(onClick = { /*TODO*/ }) {
-                Text(text = "Tutorial")
+
+            Column (
+                verticalArrangement = Arrangement.SpaceEvenly,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ){
+                Box(
+                    modifier = Modifier
+//                                    .shadow(elevation = 8.dp, shape = CircleShape)
+//                                    .size(280.dp)
+//                                    .clip(CircleShape)
+//                                    .background(MyRedSecondary)
+//                                    .background(Color.White)
+                ) {
+//                                Image(
+//                                    painter = painterResource(id = R.drawable.welcome_image),
+//                                    contentDescription = "Image with Shadow",
+//                                    modifier = Modifier.fillMaxSize(),
+//                                )
+//                    AnimatedPreloader(modifier = Modifier.size(400.dp), R.raw.welcome_activity_animation)
+                }
+
+                Text(
+                    modifier = Modifier
+                        .padding(bottom = 30.dp),
+//                            text = "Share files instantly\n" +
+//                                    "with Jedi Share",
+                    text = "Quickly transfer photos, videos, documents, audio files",
+                    fontWeight = FontWeight.Bold,
+                    textAlign = TextAlign.Center,
+                    color = MaterialTheme.colorScheme.primary,
+                    style = MaterialTheme.typography.headlineMedium)
+
             }
-            Button(onClick = {
-//                                context.startActivity(Intent(context, SignInActivity::class.java))
+
+
+//                        Text(
+//                            text = "Jedi Share is the ultimate file sharing app, designed to make sharing files a breeze.",
+//                            textAlign = TextAlign.Center,
+//                            style = MaterialTheme.tyopography.h6)
+
+
+            Button(
+                onClick = {
+//                    val intent = Intent(this@WelcomeActivity, MainActivity::class.java)
+//                    startActivity(intent)
                 viewModel.onEvent(UIEvent.ShowSignIn)
                 viewModel.onEvent(UIEvent.HideFirstTime)
-//                PreferencesManager.firstTime = false
-            },
-//                colors = ButtonDefaults.buttonColors(
-//                    contentColor = MaterialTheme.colorScheme.primaryContainer
-//                )
-                ) {
-                Text(text = "Sign In")
-            }
-            Button(onClick = {
-                viewModel.onEvent(UIEvent.ShowSignUp)
-                viewModel.onEvent(UIEvent.HideFirstTime)
-//                PreferencesManager.firstTime = false
-//                val intent = Intent(context, SignUpActivity::class.java)
-//                intent.putExtra("SME/TradeFintech", true)
-//                context.startActivity(intent)
-            }) {
-                Text(text = "Sign Up SME")
-            }
-            Button(onClick = {
-                viewModel.onEvent(UIEvent.ShowSignUp)
-                viewModel.onEvent(UIEvent.HideFirstTime)
-//                PreferencesManager.firstTime = false
-//                val intent = Intent(context, SignUpActivity::class.java)
-//                intent.putExtra("SME/TradeFintech", false)
-//                context.startActivity(intent)
-            }) {
-                Text(text = "Sign Up Trade Fintech")
+                },
+                modifier = Modifier
+                    .padding(20.dp)
+                    .fillMaxWidth(),
+                shape = RoundedCornerShape(50),
+//                colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFFec1c22)),
+            ) {
+                Text(
+                    text = "Sign In",
+                    style=MaterialTheme.typography.headlineMedium,
+                    color = Color.White,
+                    fontWeight = FontWeight.Bold
+                )
             }
         }
     }
+
+
+
+
+
+
+//    Box(
+//        modifier = Modifier
+//            .fillMaxSize()
+//    ) {
+//        Column {
+//            Row(modifier = Modifier.fillMaxWidth()) {
+//                Text(text = "WELCOME")
+//            }
+//            Button(onClick = { /*TODO*/ }) {
+//                Text(text = "Tutorial")
+//            }
+//
+//            Button(
+//                onClick = {
+////                    val intent = Intent(this@WelcomeActivity, MainActivity::class.java)
+////                    startActivity(intent)
+//                },
+//                modifier = Modifier
+//                    .padding(20.dp)
+//                    .fillMaxWidth(),
+//                shape = RoundedCornerShape(50),
+////                colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFFec1c22)),
+//            ) {
+//                Text(
+//                    text = "Sign In",
+//                    style=MaterialTheme.typography.headlineMedium,
+//                    color = Color.White,
+//                    fontWeight = FontWeight.Bold
+//                )
+//            }
+//            Button(onClick = {
+////                                context.startActivity(Intent(context, SignInActivity::class.java))
+//                viewModel.onEvent(UIEvent.ShowSignIn)
+//                viewModel.onEvent(UIEvent.HideFirstTime)
+////                PreferencesManager.firstTime = false
+//            },
+////                colors = ButtonDefaults.buttonColors(
+////                    contentColor = MaterialTheme.colorScheme.primaryContainer
+////                )
+//                ) {
+//                Text(text = "Sign In")
+//            }
+////            Button(onClick = {
+////                viewModel.onEvent(UIEvent.ShowSignUp)
+////                viewModel.onEvent(UIEvent.HideFirstTime)
+//////                PreferencesManager.firstTime = false
+//////                val intent = Intent(context, SignUpActivity::class.java)
+//////                intent.putExtra("SME/TradeFintech", true)
+//////                context.startActivity(intent)
+////            }) {
+////                Text(text = "Sign Up SME")
+////            }
+////            Button(onClick = {
+////                viewModel.onEvent(UIEvent.ShowSignUp)
+////                viewModel.onEvent(UIEvent.HideFirstTime)
+//////                PreferencesManager.firstTime = false
+//////                val intent = Intent(context, SignUpActivity::class.java)
+//////                intent.putExtra("SME/TradeFintech", false)
+//////                context.startActivity(intent)
+////            }) {
+////                Text(text = "Sign Up Trade Fintech")
+////            }
+//        }
+//    }
 }
