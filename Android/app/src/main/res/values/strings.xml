@@ -4,4 +4,6 @@
     <string name="title_activity_sign_in">SignInActivity</string>
     <string name="title_activity_sign_up">SignUpActivity</string>
     <string name="title_activity_sme_details">SmeDetailsActivity</string>
+    <string name="title_activity_fin_tech">FinTechActivity</string>
+    <string name="title_activity_add_post">AddPostActivity</string>
 </resources>
