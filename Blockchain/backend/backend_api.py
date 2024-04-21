@@ -89,7 +89,9 @@ post_data = finContract.functions.readPost(latest_post_id).call()
 
 print("Post Data:", post_data)
 """
-
+smeregCA='0x038881c6E6242F5E3705272C4af7Fd1ED7adBA51'
+smeregAbi='[{"anonymous":false,"inputs":[{"indexed":false,"internalType":"string","name":"businessID","type":"string"},{"indexed":false,"internalType":"address","name":"smeAddress","type":"address"}],"name":"SMERegistered","type":"event"},{"inputs":[{"internalType":"string","name":"_businessID","type":"string"}],"name":"getSMEData","outputs":[{"internalType":"string","name":"","type":"string"},{"internalType":"uint256","name":"","type":"uint256"},{"internalType":"string","name":"","type":"string"},{"internalType":"string","name":"","type":"string"},{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"_businessID","type":"string"}],"name":"getSMEPrivateKey","outputs":[{"internalType":"bytes","name":"","type":"bytes"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"_businessID","type":"string"},{"internalType":"uint256","name":"_creditScore","type":"uint256"},{"internalType":"string","name":"_companyName","type":"string"},{"internalType":"string","name":"_contactDetails","type":"string"}],"name":"registerSME","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"string","name":"","type":"string"}],"name":"smeRegistry","outputs":[{"internalType":"string","name":"businessID","type":"string"},{"internalType":"uint256","name":"creditScore","type":"uint256"},{"internalType":"string","name":"companyName","type":"string"},{"internalType":"string","name":"contactDetails","type":"string"},{"internalType":"address","name":"smeAddress","type":"address"}],"stateMutability":"view","type":"function"}]'
+smeregContract=w3.eth.contract(address=smeregCA, abi=smeABI)
 authCA = "0xA2cecA3D7cC7d21c0B14186d476fB43b65893B8e"
 authAbi = (
     '[{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"userAddress","type":"address"},{"indexed":false,"internalType":"string","name":"username","type":"string"},{"indexed":false,"internalType":"string","name":"email","type":"string"}],"name":"UserRegistered","type":"event"},{"inputs":[{"internalType":"address","name":"_userAddress","type":"address"},{"internalType":"address","name":"_walletAddress","type":"address"}],"name":"assignWalletAddress","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"string","name":"_password","type":"string"}],"name":"hashPassword","outputs":[{"internalType":"bytes32","name":"","type":"bytes32"}],"stateMutability":"pure","type":"function"},{"inputs":[{"internalType":"string","name":"_email","type":"string"},{"internalType":"string","name":"_password","type":"string"}],"name":"signin","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"_username","type":"string"},{"internalType":"string","name":"_email","type":"string"},{"internalType":"string","name":"_password","type":"string"}],"name":"signup","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"users","outputs":[{"internalType":"string","name":"username","type":"string"},{"internalType":"string","name":"email","type":"string"},{"internalType":"bytes32","name":"hashedPassword","type":"bytes32"},{"internalType":"address","name":"walletAddress","type":"address"}],"stateMutability":"view","type":"function"}]')
@@ -114,10 +116,20 @@ def freg():
 def finGetDetails():
     bid=request.args.get('businessID')
     details=fregContract.functions.getSMEData.call()
-    print(details)
     return {  "PID": details[0],  "BID": details[1],  "contact": details[2],"finadd": details[3]}
 
+@app.route('/smereg', methods=['POST'])
+def smereg():
+    bid=request.args.get('businessID')
+    companyName=request.args.get('companyName')
+    contactDetails=request.args.get('contactDetails')
+    smeregContract.functions.registerSME(bid,companyName,contactDetails).transact({'from': caller})
 
+@app.route('/smeGetDetails', methods=['GET'])
+def smeGetDetails():
+    bid=request.args.get('businessID')
+    details=smeregContract.functions.getSMEData.call()
+    return {  "PID": details[0],  "BID": details[1],  "contact": details[2],"finadd": details[3]}
 
 
 
@@ -129,7 +141,8 @@ def id():
     return jsonify({'financier_post_count': fincount, 'sme_post_count': semcount})
 
 
-
+#FINISHED
+#
 
 @app.route('/signup', methods=['POST'])
 def signup():
@@ -138,7 +151,7 @@ def signup():
     password = request.args.get('password')
     AuthContract.functions.signup(username, email, password).transact({'from': caller})
     # AuthContract.functions.assignWalletAddress("xyz", "mno").transact({'from': caller})
-    return jsonify({'email':email, 'username':username})
+    return True
 
 
 @app.route('/signin', methods=['POST'])
