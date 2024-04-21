@@ -78,24 +78,35 @@ print("Post Data:", post_data)
 
 
 
-"""
-SME POST TEST
 
-smeCA = "0x7B0FEbAf56641BEAedF761A12EfFF1eC924cedeF"
-smeABI = '[{"inputs":[{"internalType":"string","name":"_bid","type":"string"},{"internalType":"string","name":"_content","type":"string"},{"internalType":"string","name":"_contact","type":"string"}],"name":"createPost","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_postID","type":"uint256"}],"name":"readPost","outputs":[{"internalType":"uint256","name":"","type":"uint256"},{"internalType":"string","name":"","type":"string"},{"internalType":"string","name":"","type":"string"},{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"smePostCount","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"smePosts","outputs":[{"internalType":"uint256","name":"postID","type":"uint256"},{"internalType":"string","name":"bID","type":"string"},{"internalType":"string","name":"postContent","type":"string"},{"internalType":"string","name":"contact","type":"string"}],"stateMutability":"view","type":"function"}]'
 
-smeContract = w3.eth.contract(address=smeCA, abi=smeABI)
+
+authCA = "0xa7E1183C063d0D5a26336924766D26409fC2A10b"
+authAbi='[{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"userAddress","type":"address"},{"indexed":false,"internalType":"string","name":"username","type":"string"},{"indexed":false,"internalType":"string","name":"email","type":"string"}],"name":"UserRegistered","type":"event"},{"inputs":[{"internalType":"address","name":"_userAddress","type":"address"},{"internalType":"address","name":"_walletAddress","type":"address"}],"name":"assignWalletAddress","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"string","name":"_password","type":"string"}],"name":"hashPassword","outputs":[{"internalType":"bytes32","name":"","type":"bytes32"}],"stateMutability":"pure","type":"function"},{"inputs":[{"internalType":"string","name":"_email","type":"string"},{"internalType":"string","name":"_password","type":"string"}],"name":"signin","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"_username","type":"string"},{"internalType":"string","name":"_email","type":"string"},{"internalType":"string","name":"_password","type":"string"}],"name":"signup","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"users","outputs":[{"internalType":"string","name":"username","type":"string"},{"internalType":"string","name":"email","type":"string"},{"internalType":"bytes32","name":"hashedPassword","type":"bytes32"},{"internalType":"address","name":"walletAddress","type":"address"}],"stateMutability":"view","type":"function"}]'
+AuthContract = w3.eth.contract(address=authCA, abi=authAbi)
 
 # Create a post
-smeContract.functions.createPost("ABCDE", "CONTENT", "CONTACT").transact({'from': caller})
+# AuthContract.functions.signup("abc","xyz","mno").transact({'from': caller})
+#
+# AuthContract.functions.signin("xyz","mno").transact({'from': caller})
+#
+# AuthContract.functions.hashPassword("mno").transact({'from': caller})
+#
+# AuthContract.functions.assignWalletAddress("xyz","mno").transact({'from': caller})
 
-# Get the most recent post ID
-latest_post_id = smeContract.functions.smePostCount().call()
+smeCA = "0x6de746E43E6669B13178598bdd9fcB1aa59804A1"
+smeABI = '[{"inputs":[{"internalType":"string","name":"_bid","type":"string"},{"internalType":"string","name":"_content","type":"string"},{"internalType":"string","name":"_contact","type":"string"}],"name":"createPost","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_postID","type":"uint256"}],"name":"readPost","outputs":[{"internalType":"uint256","name":"","type":"uint256"},{"internalType":"string","name":"","type":"string"},{"internalType":"string","name":"","type":"string"},{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"smePostCount","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"smePosts","outputs":[{"internalType":"uint256","name":"postID","type":"uint256"},{"internalType":"string","name":"bID","type":"string"},{"internalType":"string","name":"postContent","type":"string"},{"internalType":"string","name":"contact","type":"string"}],"stateMutability":"view","type":"function"}]'
+smeContract=w3.eth.contract(address=smeCA, abi=smeABI)
 
-print("Latest post ID:", latest_post_id)
+finCA = "0x2bC4d89d6e6eBa95d6d64015Be2fD8B238aAF09C"
+finABI = '[{"inputs":[{"internalType":"string","name":"_bid","type":"string"},{"internalType":"string","name":"_content","type":"string"},{"internalType":"string","name":"_contact","type":"string"}],"name":"createPost","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"financierPostCount","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"financierPosts","outputs":[{"internalType":"uint256","name":"postID","type":"uint256"},{"internalType":"string","name":"bID","type":"string"},{"internalType":"string","name":"postContent","type":"string"},{"internalType":"string","name":"contact","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_postID","type":"uint256"}],"name":"readPost","outputs":[{"internalType":"uint256","name":"","type":"uint256"},{"internalType":"string","name":"","type":"string"},{"internalType":"string","name":"","type":"string"},{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"}]'
 
-# Read the latest post
-post_data = smeContract.functions.readPost(latest_post_id).call()
+finContract = w3.eth.contract(address=finCA, abi=finABI)
 
-print("Post Data:", post_data)
-"""
+for i in range(0,10):
+    smeContract.functions.createPost(str(i), "CONTENT", "CONTACT").transact({'from': caller})
+    finContract.functions.createPost(str(i), "CONTENT", "CONTACT").transact({'from': caller})
+
+
+
+

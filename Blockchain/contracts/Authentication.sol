@@ -20,7 +20,7 @@ contract Authentication {
         require(bytes(_username).length > 0, "Username must not be empty");
         require(bytes(_email).length > 0, "Email must not be empty");
         require(bytes(_password).length > 0, "Password must not be empty");
-        require(users[msg.sender].walletAddress == address(0), "User already registered");
+        require(users[msg.sender].walletAddress == address(0), "User already rezgistered");
 
         bytes32 hashedPassword = hashPassword(_password);
 
