@@ -1,5 +1,6 @@
 import com.invincible.diabolictale.data.PostContentResponse
 import com.invincible.diabolictale.data.PostCountResponse
+import com.invincible.diabolictale.data.PostItem
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
@@ -47,6 +48,18 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.*
 
 interface ApiInterface {
+      @POST("/freg")
+      fun registerFT(
+            @Query("businessID") businessID: String,
+            @Query("companyName") companyName: String,
+            @Query("contactDetails") contactDetails: String
+      ): Call<Void>
+      @POST("/smereg")
+      fun registerSME(
+            @Query("businessID") businessID: String,
+            @Query("companyName") companyName: String,
+            @Query("contactDetails") contactDetails: String
+      ): Call<Void>
 
       @POST("/createTransaction")
       fun createTransaction(
@@ -54,6 +67,7 @@ interface ApiInterface {
             @Query("sellerbid") sellerBid: String,
             @Query("termsandconditions") termsAndConditions: String
       ): Call<Void>
+
 
       @POST("/signup")
       fun signUp(
@@ -79,7 +93,7 @@ interface ApiInterface {
       ): Call<Void>
 
       @GET("/smeGetPost")
-      fun getSmePost(@Query("pid") pid: Int): Call<Map<String, String>>
+      fun getSmePost(@Query("pid") pid: Int): Call<PostItem>
 
       @POST("/finPutPost")
       fun putFinPost(
@@ -89,7 +103,7 @@ interface ApiInterface {
       ): Call<Void>
 
       @GET("/finGetPost")
-      fun getFinPost(@Query("pid") pid: Int): Call<Map<String, String>>
+      fun getFinPost(@Query("pid") pid: Int): Call<PostItem>
 
 }
 

@@ -1,6 +1,5 @@
 package com.invincible.diabolictale
 
-import android.content.Intent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -15,34 +14,24 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.AddCircle
-import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Info
-import androidx.compose.material.icons.filled.Refresh
-import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.outlined.AccountCircle
 import androidx.compose.material.icons.outlined.Add
-import androidx.compose.material.icons.outlined.Email
 import androidx.compose.material.icons.outlined.Face
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Info
-import androidx.compose.material.icons.outlined.Refresh
-import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material.icons.rounded.AccountBox
 import androidx.compose.material3.Badge
 import androidx.compose.material3.BadgedBox
 import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.DropdownMenu
-import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -50,7 +39,6 @@ import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
@@ -76,6 +64,7 @@ import com.airbnb.lottie.compose.LottieAnimation
 import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
+import com.invincible.diabolictale.data.PostItem
 import kotlinx.coroutines.delay
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -221,6 +210,10 @@ fun MyNavigationBar(viewModel:ViewModel, content: @Composable (PaddingValues) ->
 
 @Composable
 fun FTMarket(viewModel: ViewModel) {
+
+    viewModel.getPostItemCount()
+    viewModel.callFTPostItems()
+
     Box(
         modifier = Modifier
 //                                    .height(300.dp)
@@ -229,7 +222,7 @@ fun FTMarket(viewModel: ViewModel) {
 //            .background(Color.White)
             .background(MaterialTheme.colorScheme.background)
             .fillMaxWidth()
-//            .heightIn(max = 660.dp)
+            .heightIn(max = 750.dp)
         ,
         contentAlignment = Alignment.Center,
     ) {
@@ -250,7 +243,7 @@ fun FTMarket(viewModel: ViewModel) {
             Spacer(modifier = Modifier.size(24.dp))
             Column {
                 LazyColumn(modifier = Modifier.fillMaxWidth()) {
-                    items(20) { item ->
+                    items(viewModel.postItems) { item ->
                         Box(
                             modifier = Modifier
 //                                    .height(300.dp)
@@ -269,7 +262,9 @@ fun FTMarket(viewModel: ViewModel) {
                                 Image(
                                     imageVector = Icons.Rounded.AccountBox,
                                     contentDescription = null,
-                                    modifier = Modifier.size(100.dp).padding(20.dp),
+                                    modifier = Modifier
+                                        .size(100.dp)
+                                        .padding(20.dp),
                                     colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onPrimaryContainer)
                                 )
                                 Column(
@@ -278,6 +273,7 @@ fun FTMarket(viewModel: ViewModel) {
                                         .padding(16.dp)
                                         .clickable {
                                             viewModel.onEvent(UIEvent.ShowTradeFintech)
+                                            viewModel.postItem = item
 //                                                            context.startActivity(
 //                                                                Intent(
 //                                                                    context,
@@ -288,9 +284,21 @@ fun FTMarket(viewModel: ViewModel) {
                                 ) {
                                     Text(
                                         text = "FinTech",
-                                        fontWeight = FontWeight.Bold
+                                        fontWeight = FontWeight.Bold,
+                                        color = MaterialTheme.colorScheme.onPrimaryContainer
                                     )
-                                    Text(text = "whatever else")
+                                    Text(
+                                        text =  item.PID.toString(),
+                                        color = MaterialTheme.colorScheme.onPrimaryContainer
+                                    )
+                                    Text(
+                                        text = item.contact,
+                                        color = MaterialTheme.colorScheme.onPrimaryContainer
+                                    )
+                                    Text(
+                                        text = item.content,
+                                        color = MaterialTheme.colorScheme.onPrimaryContainer
+                                    )
                                 }
                             }
                         }
@@ -303,6 +311,9 @@ fun FTMarket(viewModel: ViewModel) {
 @Composable
 fun SMEMarket(viewModel: ViewModel) {
 
+    viewModel.getPostItemCount()
+    viewModel.callSMEPostItems()
+
     Box(
         modifier = Modifier
 //                                    .height(300.dp)
@@ -311,6 +322,7 @@ fun SMEMarket(viewModel: ViewModel) {
 //            .background(Color.White)
             .background(MaterialTheme.colorScheme.background)
             .fillMaxWidth()
+            .heightIn(max = 750.dp)
 //            .heightIn(max = 660.dp),
                 ,
         contentAlignment = Alignment.Center,
@@ -326,7 +338,7 @@ fun SMEMarket(viewModel: ViewModel) {
             Spacer(modifier = Modifier.size(24.dp))
 //            Spacer(modifier = Modifier.size(12.dp))
             LazyColumn(modifier = Modifier) {
-                items(20) { item ->
+                items(viewModel.postItems) { item ->
                     Box(
                         modifier = Modifier
 //                                    .height(300.dp)
@@ -342,7 +354,9 @@ fun SMEMarket(viewModel: ViewModel) {
                             verticalAlignment = Alignment.CenterVertically,
                             horizontalArrangement = Arrangement.Center
                         ) {
-                            Image(imageVector = Icons.Rounded.AccountBox, contentDescription = null, modifier = Modifier.size(100.dp).padding(20.dp), colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onPrimaryContainer))
+                            Image(imageVector = Icons.Rounded.AccountBox, contentDescription = null, modifier = Modifier
+                                .size(100.dp)
+                                .padding(20.dp), colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onPrimaryContainer))
 
                             Column(
                                 modifier = Modifier
@@ -350,6 +364,7 @@ fun SMEMarket(viewModel: ViewModel) {
                                     .padding(16.dp)
                                     .clickable {
                                         viewModel.onEvent(UIEvent.ShowSME)
+                                        viewModel.postItem = item
 //                                                            context.startActivity(
 //                                                                Intent(
 //                                                                    context,
@@ -364,15 +379,15 @@ fun SMEMarket(viewModel: ViewModel) {
                                     color = MaterialTheme.colorScheme.onPrimaryContainer
                                 )
                                 Text(
-                                    text = "Contracts",
+                                    text =  item.PID.toString(),
                                     color = MaterialTheme.colorScheme.onPrimaryContainer
                                 )
                                 Text(
-                                    text = "Terms",
+                                    text = item.contact,
                                     color = MaterialTheme.colorScheme.onPrimaryContainer
                                 )
                                 Text(
-                                    text = "Online Applications",
+                                    text = item.content,
                                     color = MaterialTheme.colorScheme.onPrimaryContainer
                                 )
                             }
@@ -464,35 +479,38 @@ fun AddPost(viewModel: ViewModel) {
         Column {
             Text(text = "Create Post")
 
-            var serviceName by rememberSaveable { mutableStateOf("") }
+            var BID by rememberSaveable { mutableStateOf("") }
             TextField(
-                value = serviceName,
+                value = BID,
                 onValueChange = {
-                    serviceName = it
+                    BID = it
                 },
-                label = { Text("Service Name") }
+                label = { Text("BID") }
             )
 
-            var serviceType by rememberSaveable { mutableStateOf("") }
+            var content by rememberSaveable { mutableStateOf("") }
             TextField(
-                value = serviceType,
+                value = content,
                 onValueChange = {
-                    serviceType = it
+                    content = it
                 },
-                label = { Text("Service Type") }
+                label = { Text("Content") }
             )
 
-            var value by rememberSaveable { mutableStateOf("") }
+            var contact by rememberSaveable { mutableStateOf("") }
             TextField(
-                value = value,
+                value = contact,
                 onValueChange = {
-                    value = it
+                    contact = it
                 },
-                label = { Text("Value") }
+                label = { Text("Contact") }
             )
+
+            val postItem: PostItem = PostItem(-1, BID, content, contact)
 
             Button(onClick = {
                 viewModel.onEvent(UIEvent.ShowDoneAnimation)
+                if(viewModel.state.value.isRoleSME) viewModel.putSMEPost(postItem) else viewModel.putFTPost(postItem)
             }) {
                 Text(text = "POST")
             }
@@ -570,6 +588,8 @@ fun TradeFintechDetails(viewModel: ViewModel) {
 
                         Button(onClick = {
                             viewModel.onEvent(UIEvent.ShowDoneAnimation)
+                            viewModel.termAndConditions = value
+                            viewModel.putTransaction()
                         }) {
                             Text(text = "REQUEST")
                         }
@@ -647,6 +667,8 @@ fun SMEDetails(viewModel: ViewModel) {
 
                     Button(onClick = {
                         viewModel.onEvent(UIEvent.ShowDoneAnimation)
+                        viewModel.termAndConditions = value
+                        viewModel.putTransaction()
                     }) {
                         Text(text = "SPONSOR")
                     }
@@ -709,7 +731,6 @@ fun SignIn(viewModel: ViewModel) {
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Text(text = "Forgot Password?", color = Color.Blue, modifier = Modifier.clickable {  })
 
                 Row {
                     Text(text = "Don't have an account?")
@@ -744,8 +765,6 @@ fun SignUp(viewModel: ViewModel) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             if(viewModel.state.value.isRoleSME) {
-
-
                 Text(
                     modifier = Modifier
                         .padding(top = 50.dp, bottom = 30.dp),
@@ -774,11 +793,11 @@ fun SignUp(viewModel: ViewModel) {
                 ) {
 //                    Text(text = "Sign Up SME")
 
-                    var companyName by rememberSaveable { mutableStateOf("") }
+                    var email by rememberSaveable { mutableStateOf("") }
                     TextField(
-                        value = companyName,
+                        value = email,
                         onValueChange = {
-                            companyName = it
+                            email = it
                         },
                         label = { Text("Email") }
                     )
@@ -792,27 +811,82 @@ fun SignUp(viewModel: ViewModel) {
                         label = { Text("Contact") }
                     )
 
-                    var creditScore by rememberSaveable { mutableStateOf("") }
+                    var BID by rememberSaveable { mutableStateOf("") }
                     TextField(
-                        value = creditScore,
+                        value = BID,
                         onValueChange = {
-                            creditScore = it
-                        },
-                        label = { Text("Credit Score") }
-                    )
-
-                    var bid by rememberSaveable { mutableStateOf("") }
-                    TextField(
-                        value = bid,
-                        onValueChange = {
-                            bid = it
+                            BID = it
                         },
                         label = { Text("BID") }
                     )
 
+                    var companyName by rememberSaveable { mutableStateOf("") }
+                    TextField(
+                        value = companyName,
+                        onValueChange = {
+                            companyName = it
+                        },
+                        label = { Text("Company Name") }
+                    )
+
+                    var username by rememberSaveable { mutableStateOf("") }
+                    TextField(
+                        value = username,
+                        onValueChange = {
+                            username = it
+                        },
+                        label = { Text("Username") }
+                    )
+
+                    var password by rememberSaveable { mutableStateOf("") }
+                    TextField(
+                        value = password,
+                        onValueChange = {
+                            password = it
+                        },
+                        label = { Text("Password") }
+                    )
+//                    var email by rememberSaveable { mutableStateOf("") }
+//                    TextField(
+//                        value = email,
+//                        onValueChange = {
+//                            email = it
+//                        },
+//                        label = { Text("Email") }
+//                    )
+//
+//                    var contact by rememberSaveable { mutableStateOf("") }
+//                    TextField(
+//                        value = contact,
+//                        onValueChange = {
+//                            contact = it
+//                        },
+//                        label = { Text("Contact") }
+//                    )
+//
+//                    var username by rememberSaveable { mutableStateOf("") }
+//                    TextField(
+//                        value = username,
+//                        onValueChange = {
+//                            username = it
+//                        },
+//                        label = { Text("Username") }
+//                    )
+//
+//                    var password by rememberSaveable { mutableStateOf("") }
+//                    TextField(
+//                        value = password,
+//                        onValueChange = {
+//                            password = it
+//                        },
+//                        label = { Text("Password") }
+//                    )
+
                     Button(onClick = {
                         viewModel.onEvent(UIEvent.HideSignUp)
                         viewModel.onEvent(UIEvent.ShowFTMarket)
+                        viewModel.putSignUp(username, email, password)
+                        viewModel.putRegisterSME(BID, companyName, contact)
                     }) {
                         Text(text = "SIGN UP")
                     }
@@ -842,12 +916,11 @@ fun SignUp(viewModel: ViewModel) {
                     verticalArrangement = Arrangement.SpaceAround,
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-
-                    var companyName by rememberSaveable { mutableStateOf("") }
+                    var email by rememberSaveable { mutableStateOf("") }
                     TextField(
-                        value = companyName,
+                        value = email,
                         onValueChange = {
-                            companyName = it
+                            email = it
                         },
                         label = { Text("Email") }
                     )
@@ -861,18 +934,47 @@ fun SignUp(viewModel: ViewModel) {
                         label = { Text("Contact") }
                     )
 
-                    var bid by rememberSaveable { mutableStateOf("") }
+                    var BID by rememberSaveable { mutableStateOf("") }
                     TextField(
-                        value = bid,
+                        value = BID,
                         onValueChange = {
-                            bid = it
+                            BID = it
                         },
                         label = { Text("BID") }
+                    )
+
+                    var companyName by rememberSaveable { mutableStateOf("") }
+                    TextField(
+                        value = companyName,
+                        onValueChange = {
+                            companyName = it
+                        },
+                        label = { Text("Company Name") }
+                    )
+
+                    var username by rememberSaveable { mutableStateOf("") }
+                    TextField(
+                        value = username,
+                        onValueChange = {
+                            username = it
+                        },
+                        label = { Text("Username") }
+                    )
+
+                    var password by rememberSaveable { mutableStateOf("") }
+                    TextField(
+                        value = password,
+                        onValueChange = {
+                            password = it
+                        },
+                        label = { Text("Password") }
                     )
 
                     Button(onClick = {
                         viewModel.onEvent(UIEvent.HideSignUp)
                         viewModel.onEvent(UIEvent.ShowSMEMarket)
+                        viewModel.putSignUp(username, email, password)
+                        viewModel.putRegisterFT(BID, companyName, contact)
                     }) {
                         Text(text = "SIGN UP")
                     }

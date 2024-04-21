@@ -1,10 +1,8 @@
 package com.invincible.diabolictale
 
-import ApiInterface
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
@@ -15,20 +13,15 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
-import com.invincible.diabolictale.data.PostContentResponse
+import com.invincible.diabolictale.data.PostItem
 import com.invincible.diabolictale.ui.theme.DiabolicTaleTheme
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
 
 data class BottomNavigationItem(
     val title: String,
@@ -53,78 +46,116 @@ class MainActivity : ComponentActivity() {
         // Creating shared prefs
         PreferencesManager.initialize(this)
 
+//        val postItems: MutableState<PostItem> = mutableListOf()
+//        val postItems = mutableStateListOf<PostItem>()
+
         super.onCreate(savedInstanceState)
 
 
 
 
-        try{
-            // Create an instance of ApiInterface
-            val apiInterface = ApiClient.create()
-
-// Example usage of the getPostCount function
-            val getPostCountCall = apiInterface.getLastId()
-            getPostCountCall.enqueue(object : Callback<Map<String, Int>> {
-                override fun onResponse(call: Call<Map<String, Int>>, response: Response<Map<String, Int>>) {
-                    if (response.isSuccessful) {
-                        val postCountData = response.body()
-                        // Handle successful response, postCountData contains the response data
-                        Log.e("myDebugTag", "onResponse: " + postCountData, )
-                    } else {
-                        // Handle unsuccessful response
-                        Log.e("myDebugTag", "onResponse: " + "NOO", )
-                    }
-                }
-
-                override fun onFailure(call: Call<Map<String, Int>>, t: Throwable) {
-                    // Handle failure
-                }
-            })
-
-//            val smePostId = 1 // Replace with the actual pid value for SME post
-//            val getSmePostCall = apiInterface.getSmePost(smePostId)
-//            getSmePostCall.enqueue(object : Callback<Map<String, String>> {
-//                override fun onResponse(call: Call<Map<String, String>>, response: Response<Map<String, String>>) {
+//        try{
+//            // Create an instance of ApiInterface
+//            val apiInterface = ApiClient.create()
+//
+//// Example usage of the getPostCount function
+////            val postCountData: Int
+//            var postCountData: Map<String, Int>? = null
+//
+//            val getPostCountCall = apiInterface.getLastId()
+//            getPostCountCall.enqueue(object : Callback<Map<String, Int>> {
+//                override fun onResponse(call: Call<Map<String, Int>>, response: Response<Map<String, Int>>) {
 //                    if (response.isSuccessful) {
-//                        val smePostData = response.body()
-//                        // Handle successful response, smePostData contains the response data
+//                        postCountData = response.body()
+//                        Log.e("MYTAG", postCountData.toString())
+//                        // Handle successful response, postCountData contains the response data
+//                        Log.e("myDebugTag", "onResponse: " + postCountData, )
 //                    } else {
 //                        // Handle unsuccessful response
+//                        Log.e("myDebugTag", "onResponse: " + "NOO", )
 //                    }
 //                }
 //
-//                override fun onFailure(call: Call<Map<String, String>>, t: Throwable) {
+//                override fun onFailure(call: Call<Map<String, Int>>, t: Throwable) {
 //                    // Handle failure
 //                }
 //            })
-
-// Example usage of the getFinPost function
-            val finPostId = 1 // Replace with the actual pid value for financial post
-            val getFinPostCall = apiInterface.getFinPost(finPostId)
-            getFinPostCall.enqueue(object : Callback<Map<String, String>> {
-                override fun onResponse(call: Call<Map<String, String>>, response: Response<Map<String, String>>) {
-                    if (response.isSuccessful) {
-                        val finPostData = response.body()
-                        Log.e("myDebugTag", "onResponse: " + finPostData, )
-                        // Handle successful response, finPostData contains the response data
-                    } else {
-                        // Handle unsuccessful response
-                    }
-                }
-
-                override fun onFailure(call: Call<Map<String, String>>, t: Throwable) {
-                    // Handle failure
-                }
-            })
-
-
-            //Log.e("myDebugTag", "onCreate: " + getSMEPost(1).toString(), )
-            //Log.e("myDebugTag", "onCreate: " + getHello(), )
-            //Log.e("myDebugTag", "onCreate: " + getLastID(), )
-        }
-        catch (e: Exception){
-            Log.e("myDebugTag", "onCreate: " + e.toString(), )
-        }
+////            Log.e("MYTAG", postCountData.toString())
+//
+//// Example usage of the getSm{ePost function
+////            viewModel.state.
+//            for(i in 1..20) {
+//                val smePostId = i // Replace with the actual pid value for SME post
+//                val getSmePostCall = apiInterface.getSmePost(smePostId)
+//                getSmePostCall.enqueue(object : Callback<PostItem> {
+//                    override fun onResponse(call: Call<PostItem>, response: Response<PostItem>) {
+//                        if (response.isSuccessful) {
+//                            val smePostItem = response.body()
+//                            if (smePostItem != null) {
+//                                viewModel.postItems.add(smePostItem)
+//                            }
+//                            Log.e("MYTAG", smePostItem.toString())
+//                            Log.e("MYTAG", viewModel.postItems.size.toString())
+//                            Log.e("MYTAG", viewModel.postItems.toString())
+//                            // Handle successful response, smePostItem contains the parsed PostItem object
+//                        } else {
+//                            // Handle unsuccessful response
+//                            Log.e("MYTAG", "ON FAIL FIN POST")
+//                        }
+//                    }
+//
+//                    override fun onFailure(call: Call<PostItem>, t: Throwable) {
+//                        // Handle failure
+//                        Log.e("MYTAG", "ON FAIL FIN POST")
+//                    }
+//                })
+//            }
+//            Log.e("MYTAG", viewModel.postItems.toString())
+////)
+//
+//// Example usage of the getFinPost function
+//// Example usage of the getFinPost function
+//
+////            for(i in 1..(postCountData?.get?: 0)) {
+//            for(i in 1..10) {
+//                val finPostId = i // Replace with the actual pid value for financial post
+//                val getFinPostCall = apiInterface.getFinPost(finPostId)
+//                getFinPostCall.enqueue(object : Callback<PostItem> {
+//                    override fun onResponse(call: Call<PostItem>, response: Response<PostItem>) {
+//                        if (response.isSuccessful) {
+//                            val finPostItem = response.body()
+//                            Log.e("MYTAG", finPostItem.toString())
+//                            Log.e("MYTAG", viewModel.postItems.size.toString())
+//                            Log.e("MYTAG", viewModel.postItems.toString())
+//                            if (finPostItem != null) {
+//                                viewModel.postItems.add(finPostItem)
+//                                Log.e("MYTAG", finPostItem.toString())
+//                                Log.e("MYTAG", viewModel.postItems.size.toString())
+//                                Log.e("MYTAG", viewModel.postItems.toString())
+//                            }
+//                            // Handle successful response, finPostItem contains the parsed PostItem object
+//                        } else {
+//                            // Handle unsuccessful response
+//                            Log.e("MYTAG", "ON FAIL FIN POST")
+//                        }
+//                    }
+//
+//                    override fun onFailure(call: Call<PostItem>, t: Throwable) {
+//                        // Handle failure
+//                        Log.e("MYTAG", "ON FAIL FIN POST")
+//                    }
+//                })            // Handle successful response, finPostData contains the response data
+//            }
+//            Log.e("MYTAG", "fjdslfkajsdfjlasdjfjsdajfldasjlfjlajsdfja")
+//
+//
+//            //Log.e("myDebugTag", "onCreate: " + getSMEPost(1).toString(), )
+//            //Log.e("myDebugTag", "onCreate: " + getHello(), )
+//            //Log.e("myDebugTag", "onCreate: " + getLastID(), )
+//        }
+//        catch (e: Exception){
+//            Log.e("myDebugTag", "onCreate: " + e.toString(), )
+//        }
         setContent {
             DiabolicTaleTheme {
 
@@ -150,18 +181,24 @@ class MainActivity : ComponentActivity() {
                             MyNavigationBar(viewModel) {
                                 if (state.isAddingPost) {
                                     AddPost(viewModel = viewModel)
-                                } else if (state.isDoneAnimationEnabled) {
-                                    DoneLottieAnimation(viewModel)
-                                } else if (state.isViewingTradeFintechDetails) {
-                                    TradeFintechDetails(viewModel = viewModel)
-                                } else if (state.isViewingSMEDetails) {
-                                    SMEDetails(viewModel = viewModel)
-                                } else if(state.isViewingFTMarket) {
-                                    FTMarket(viewModel)
-                                } else if(state.isViewingSMEMarket) {
-                                    SMEMarket(viewModel)
-                                } else if(state.isLoadingAnimationEnabled) {
+                                }
+                                else if(state.isLoadingAnimationEnabled) {
                                     LoadingLottieAnimation(viewModel = viewModel)
+                                }
+                                else if (state.isDoneAnimationEnabled) {
+                                    DoneLottieAnimation(viewModel)
+                                }
+                                else if (state.isViewingTradeFintechDetails) {
+                                    TradeFintechDetails(viewModel = viewModel)
+                                }
+                                else if (state.isViewingSMEDetails) {
+                                    SMEDetails(viewModel = viewModel)
+                                }
+                                else if(state.isViewingFTMarket) {
+                                    FTMarket(viewModel)
+                                }
+                                else if(state.isViewingSMEMarket) {
+                                    SMEMarket(viewModel)
                                 }
                             }
                         }
