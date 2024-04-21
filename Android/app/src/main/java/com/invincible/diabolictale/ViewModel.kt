@@ -44,7 +44,7 @@ class ViewModel: ViewModel() {
 
     fun callSMEPostItems() {
         postItems.clear()
-        for(i in 1..(postCountData?.get("sme_post_count") ?: 0)) {
+        for(i in 1..(postCountData?.get("sme_post_count") ?: 10)) {
             val smePostId = i // Replace with the actual pid value for SME post
             val getSmePostCall = apiInterface.getSmePost(smePostId)
             getSmePostCall.enqueue(object : Callback<PostItem> {
@@ -75,7 +75,7 @@ class ViewModel: ViewModel() {
     fun callFTPostItems() {
         postItems.clear()
 //        for(i in 1..10) {
-        for(i in 1..(postCountData?.get("financier_post_count") ?: 0)) {
+        for(i in 1..(postCountData?.get("financier_post_count") ?: 10)) {
             val finPostId = i // Replace with the actual pid value for financial post
             val getFinPostCall = apiInterface.getFinPost(finPostId)
             getFinPostCall.enqueue(object : Callback<PostItem> {
@@ -240,8 +240,24 @@ class ViewModel: ViewModel() {
             }
             UIEvent.HideAddPost -> {
                 _state.update { it.copy(
-                    isAddingPost = false
                 )
+                }
+                if(!_state.value.isRoleSME) {
+                    _state.update {
+                        it.copy(
+                            isAddingPost = false,
+                            isViewingSMEMarket = true,
+                            isViewingFTMarket = false
+                        )
+                    }
+                } else {
+                    _state.update {
+                        it.copy(
+                            isAddingPost = false,
+                            isViewingSMEMarket = false,
+                            isViewingFTMarket = true
+                        )
+                    }
                 }
             }
             UIEvent.ShowDoneAnimation -> {
@@ -265,25 +281,27 @@ class ViewModel: ViewModel() {
                 _state.update { it.copy(
                     isLoadingAnimationEnabled = true,
                     isAddingPost = false,
-                    isViewingSMEDetails = false,
-                    isViewingTradeFintechDetails = false,
-                    isViewingFTMarket = false,
-                    isViewingSMEMarket = false,
+//                    isViewingSMEDetails = false,
+//                    isViewingTradeFintechDetails = false,
+//                    isViewingFTMarket = false,
+//                    isViewingSMEMarket = false,
                 )
                 }
             }
             UIEvent.HideLoadingAnimation -> {
-                if(_state.value.isRoleSME) {
+                if(!_state.value.isRoleSME) {
                     _state.update {
                         it.copy(
                             isLoadingAnimationEnabled = false,
-                            isViewingSMEMarket = true
+                            isViewingSMEMarket = true,
+                            isViewingFTMarket = false
                         )
                     }
                 } else {
                     _state.update {
                         it.copy(
                             isLoadingAnimationEnabled = false,
+                            isViewingSMEMarket = false,
                             isViewingFTMarket = true
                         )
                     }

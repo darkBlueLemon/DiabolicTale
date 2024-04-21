@@ -14,8 +14,10 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
@@ -32,6 +34,9 @@ import androidx.compose.material.icons.rounded.AccountBox
 import androidx.compose.material3.Badge
 import androidx.compose.material3.BadgedBox
 import androidx.compose.material3.Button
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardElevation
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -54,7 +59,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
@@ -89,7 +96,7 @@ fun MyNavigationBar(viewModel:ViewModel, content: @Composable (PaddingValues) ->
             title = "Home",
             selectedIcon = Icons.Filled.Home,
             unselectedIcon = Icons.Outlined.Home,
-            hasNews = true,
+            hasNews = false,
         ),
         BottomNavigationItem(
 //            title = if(!state.isRoleSME) "SME" else "Fintech",
@@ -441,7 +448,9 @@ fun DoneLottieAnimation(viewModel: ViewModel) {
 
 @Composable
 fun LoadingLottieAnimation(viewModel: ViewModel) {
-    val composition by rememberLottieComposition(LottieCompositionSpec.RawRes(R.raw.done))
+
+
+    val composition by rememberLottieComposition(LottieCompositionSpec.RawRes(R.raw.loadingfinal))
     var isPlaying by remember {
         mutableStateOf(true)
     }
@@ -468,9 +477,24 @@ fun LoadingLottieAnimation(viewModel: ViewModel) {
         verticalArrangement = Arrangement.Center
     ) {
         LottieAnimation(
-            modifier = Modifier.size(700.dp),
+            modifier = Modifier.size(1.dp),
             composition = composition, progress = progress
         )
+        CircularProgressIndicator(
+            modifier = Modifier.width(64.dp),
+            color = MaterialTheme.colorScheme.secondary,
+            trackColor = MaterialTheme.colorScheme.surfaceVariant,
+        )
+        Text(
+            modifier = Modifier
+                .padding(top = 50.dp, bottom = 30.dp),
+//                            text = "Share files instantly\n" +
+//                                    "with Jedi Share",
+            text = "Switching Roles",
+            fontWeight = FontWeight.Bold,
+            textAlign = TextAlign.Center,
+            color = MaterialTheme.colorScheme.primary,
+            style = MaterialTheme.typography.headlineLarge)
     }
 }
 
@@ -718,7 +742,7 @@ fun SignIn(viewModel: ViewModel) {
                 onValueChange = {
                     password = it
                 },
-                label = { Text("PASSWORD") }
+                label = { Text("Password") }
             )
 
             Button(onClick = {
@@ -1005,20 +1029,34 @@ fun Welcome(viewModel: ViewModel) {
                     modifier = Modifier
                         .padding(top = 60.dp),
                     text = "Welcome to",
-                    style = MaterialTheme.typography.headlineMedium
+                    style = MaterialTheme.typography.headlineSmall
                     ,
                     color = Color.Black,
                 )
                 Text(
                     modifier = Modifier
                         .padding(bottom = 5.dp),
-                    text = "Commerce Simplified",
+                    text = "Devium",
                     textDecoration = TextDecoration.Underline,
 //                    color = Color(0xFFec1c22),
                     color = MaterialTheme.colorScheme.primary,
                     fontWeight = FontWeight.Bold,
-                    style = MaterialTheme.typography.headlineMedium,
+                    style = MaterialTheme.typography.displayMedium,
 //                                textDecoration = TextDecoration.Underline
+                )
+            }
+
+            Card(
+//                modifier = Modifier.size(48.dp).tag("circle"),
+                modifier = Modifier.size(300.dp),
+                shape = CircleShape,
+//                elevation = CardElevation(2.dp)
+            ) {
+                Image(
+                    painterResource(R.drawable.logo),
+                    contentDescription = "",
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier.padding(30.dp).fillMaxSize()
                 )
             }
 
@@ -1047,7 +1085,7 @@ fun Welcome(viewModel: ViewModel) {
                         .padding(bottom = 30.dp),
 //                            text = "Share files instantly\n" +
 //                                    "with Jedi Share",
-                    text = "Quickly transfer photos, videos, documents, audio files",
+                    text = "All Enterprises Matter",
                     fontWeight = FontWeight.Bold,
                     textAlign = TextAlign.Center,
                     color = MaterialTheme.colorScheme.primary,
